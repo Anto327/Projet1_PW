@@ -13,7 +13,7 @@ class LicencieDAO
     public function create(LicencieModel $licencie)
     {
         try {
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO licencies (num_licence, nom, prenom, id_categorie, id_contact) VALUES (?, ?, ?, ?)");
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO licencies (num_licence, nom, prenom, id_categorie, id_contact) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute([$licencie->getNumLicence(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getIdCategorie(), $licencie->getIdContact()]);
             return true;
         } catch (PDOException $e) {

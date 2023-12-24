@@ -34,6 +34,11 @@ class ContactModel
         return $this->prenom;
     }
 
+    public function getNomComplet()
+    {
+        return "$this->nom $this->prenom";
+    }
+
     public function getEmail()
     {
         return $this->email;

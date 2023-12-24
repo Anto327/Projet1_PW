@@ -1,20 +1,3 @@
-<?php
-
-// Exception handling
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-// Imports
-require_once "../../config/Connexion.php";
-require_once "../../classes/dao/ContactDAO.php";
-require_once "../../classes/models/ContactModel.php";
-// Data
-$contactDAO = new ContactDAO(new Connexion());
-$contacts =  $contactDAO->getAll();
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -26,9 +9,9 @@ $contacts =  $contactDAO->getAll();
 
 <body>
     <h1>Liste des Contacts</h1>
-    <a href="AddContactController.php">Ajouter un contact</a>
+    <a href="index.php?page=contacts&action=add">Ajouter un contact</a>
 
-    <?php if (count($contacts) > 0) : ?>
+    <?php if (!empty($contacts)) : ?>
         <table>
             <thead>
                 <tr>
@@ -47,9 +30,9 @@ $contacts =  $contactDAO->getAll();
                         <td><?php echo $contact->getEmail(); ?></td>
                         <td><?php echo $contact->getTelephone(); ?></td>
                         <td>
-                            <a href="ViewContactController.php?id=<?php echo $contact->getId(); ?>">Voir</a>
-                            <a href="EditContactController.php?id=<?php echo $contact->getId(); ?>">Modifier</a>
-                            <a href="DeleteContactController.php?id=<?php echo $contact->getId(); ?>">Supprimer</a>
+                            <a href="index.php?page=contacts&action=show&id=<?php echo $contact->getId(); ?>">Voir</a>
+                            <a href="index.php?page=contacts&action=edit&id=<?php echo $contact->getId(); ?>">Modifier</a>
+                            <a href="index.php?page=contacts&action=delete&id=<?php echo $contact->getId(); ?>">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

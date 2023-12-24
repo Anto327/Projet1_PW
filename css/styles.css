@@ -1,5 +1,13 @@
 /* Réinitialisation des styles par défaut du navigateur */
-body, h1, h2, h3, p, ul, li, form, input {
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li,
+form,
+input {
     margin: 0;
     padding: 0;
     border: 0;
@@ -10,8 +18,8 @@ body {
     background-color: #f0f0f0;
     color: #333;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
+    width: 96%;
+    padding: 2%;
 }
 
 .container {
@@ -42,11 +50,14 @@ table {
     margin-bottom: 20px;
 }
 
-table, th, td {
+table,
+th,
+td {
     border: 1px solid #ddd;
 }
 
-th, td {
+th,
+td {
     padding: 10px;
     text-align: left;
 }
@@ -89,4 +100,3 @@ input[type="submit"]:hover {
 }
 
 /* Ajoutez ici vos styles personnalisés en fonction de votre conception spécifique */
-

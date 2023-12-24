@@ -35,6 +35,7 @@ if (array_key_exists($page, $controllers)) {
     $controllerName = $controllers[$page];
     // Inclure le fichier du controleur
     require_once("./controllers/$controllerName.php");
+    echo "<a href='index.php?page=home'>Accueil</a><br>";
     echo "Vous appelez ce controller : $controllerName";
     // Instancier le controleur
     $controller = new $controllerName($contactDAO);
