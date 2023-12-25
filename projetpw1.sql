@@ -25,5 +25,7 @@ CREATE TABLE `contacts` (
   `nom` varchar(50) NOT NULL,
   `prenom` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `telephone` varchar(15) NOT NULL
+  `telephone` varchar(15) NOT NULL,
+  `id_licencie` int NOT NULL,
+  FOREIGN KEY (`id_licencie`) REFERENCES licencies(`id`)
 );

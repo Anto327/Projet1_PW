@@ -14,7 +14,7 @@
     <?php if ($categorie) : ?>
         <p>Voulez-vous vraiment supprimer la catégorie <strong>"<?php echo $categorie->getNom(); ?>"</strong> ?</p>
         <form action="index.php?page=categories&action=delete&id=<?php echo $categorie->getId(); ?>" method="post">
-            <input type="submit" value="Oui, Supprimer">
+            <button type="submit">Oui, Supprimer</button>
         </form>
     <?php else : ?>
         <p>Le catégorie n'a pas été trouvée.</p>

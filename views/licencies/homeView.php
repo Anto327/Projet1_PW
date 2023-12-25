@@ -19,8 +19,6 @@
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Catégorie</th>
-                    <th>Email</th>
-                    <th>Téléphone</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -30,8 +28,6 @@
                         <td><?php echo $licencie->getNumLicence(); ?></td>
                         <td><?php echo $licencie->getNom(); ?></td>
                         <td><?php echo $licencie->getPrenom(); ?></td>
-                        <td><?php echo $licencie->getIdCategorie(); ?></td>
-                        <td><?php echo $licencie->getIdCategorie(); ?></td>
                         <td><?php echo $licencie->getIdCategorie(); ?></td>
                         <td>
                             <a href="index.php?page=licencies&action=show&id=<?php echo $licencie->getId(); ?>">Voir</a>

@@ -3,32 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Modifier un Contact</title>
+    <title>Modifier un licencié</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
-    <h1>Modifier un Contact</h1>
-    <a href="index.php?page=contacts">Retour à la liste des contacts</a>
+    <h1>Modifier un licencié</h1>
+    <a href="index.php?page=licencies">Retour à la liste des licencies</a>
 
-    <?php if ($contact) : ?>
-        <form action="index.php?page=contacts&action=update&id=<?php echo $contact->getId(); ?>" method="post">
+    <?php if ($licencie) : ?>
+        <form action="index.php?page=licencies&action=update&id=<?php echo $licencie->getId(); ?>" method="post">
+            <label for="num_licence">Numéro de licence :</label>
+            <input type="number" id="num_licence" name="num_licence" value="<?php echo $licencie->getNumLicence(); ?>" required><br>
+
             <label for="nom">Nom :</label>
-            <input type="text" id="nom" name="nom" value="<?php echo $contact->getNom(); ?>" required><br>
+            <input type="text" id="nom" name="nom" value="<?php echo $licencie->getNom(); ?>" required><br>
 
             <label for="prenom">Prénom :</label>
-            <input type="text" id="prenom" name="prenom" value="<?php echo $contact->getPrenom(); ?>" required><br>
+            <input type="text" id="prenom" name="prenom" value="<?php echo $licencie->getPrenom(); ?>" required><br>
 
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" value="<?php echo $contact->getEmail(); ?>" required><br>
+            <label for="id_categorie">Catégorie :</label>
+            <select id="id_categorie" name="id_categorie" required>
+                <option value="">-- Choisir une catégorie --</option>
+                <?php foreach ($categories as $categorie) : ?>
+                    <option value="<?php echo $categorie->getId(); ?>" <?php if ($categorie->getId() == $licencie->getIdCategorie()) echo "selected"; ?>>
+                        <?php echo $categorie->getNom(); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
 
-            <label for="telephone">Téléphone :</label>
-            <input type="text" id="telephone" name="telephone" value="<?php echo $contact->getTelephone(); ?>" required><br>
-
-            <input type="submit" value="Modifier">
+            <button type="submit">Modifier</button>
         </form>
     <?php else : ?>
-        <p>Le contact n'a pas été trouvé.</p>
+        <p>Le licencie n'a pas été trouvé.</p>
     <?php endif; ?>
 
 </body>

@@ -14,7 +14,7 @@
     <?php if ($contact) : ?>
         <p>Voulez-vous vraiment supprimer le contact <strong>"<?php echo $contact->getNomComplet(); ?>"</strong> ?</p>
         <form action="index.php?page=contacts&action=delete&id=<?php echo $contact->getId(); ?>" method="post">
-            <input type="submit" value="Oui, Supprimer">
+            <button type="submit">Oui, Supprimer</button>
         </form>
     <?php else : ?>
         <p>Le contact n'a pas été trouvé.</p>

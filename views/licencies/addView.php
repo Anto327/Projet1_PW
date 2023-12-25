@@ -13,7 +13,7 @@
 
     <form action="index.php?page=licencies&action=create" method="post">
         <label for="num_licence">Numéro de licence :</label>
-        <input type="text" id="num_licence" name="num_licence" required><br>
+        <input type="number" id="num_licence" name="num_licence" required><br>
 
         <label for="nom">Nom :</label>
         <input type="text" id="nom" name="nom" required><br>
@@ -22,14 +22,14 @@
         <input type="text" id="prenom" name="prenom" required><br>
 
         <label for="id_categorie">Catégorie :</label>
-        <select name="id_categorie" id="id_categorie" required>
-            <option value="">-- Choisir --</option>
+        <select id="id_categorie" name="id_categorie" required>
+            <option value="">-- Choisir une catégorie --</option>
             <?php foreach ($categories as $categorie) : ?>
                 <option value="<?php echo $categorie->getId(); ?>"><?php echo $categorie->getNom(); ?></option>
             <?php endforeach; ?>
         </select><br>
 
-        <input type="submit" name="action" value="Ajouter">
+        <button type="submit">Ajouter</button>
     </form>
 </body>
 

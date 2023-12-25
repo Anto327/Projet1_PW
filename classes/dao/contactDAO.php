@@ -13,8 +13,8 @@ class ContactDAO
     public function create(ContactModel $contact)
     {
         try {
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO contacts (nom, prenom, email, telephone) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone()]);
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO contacts (nom, prenom, email, telephone, id_licencie) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(), $contact->getIdLicencie()]);
             return true;
         } catch (PDOException $e) {
             // Gestion des erreurs
@@ -30,7 +30,7 @@ class ContactDAO
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($row) return new ContactModel($row['id'], $row['nom'], $row['prenom'], $row['email'], $row['telephone']);
+            if ($row) return new ContactModel($row['id'], $row['nom'], $row['prenom'], $row['email'], $row['telephone'], $row['id_licencie']);
             return null; // Aucun contact trouvé avec cet ID
         } catch (PDOException $e) {
             // Gestion des erreurs
@@ -46,7 +46,7 @@ class ContactDAO
             $contacts = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $contacts[] = new ContactModel($row['id'], $row['nom'], $row['prenom'], $row['email'], $row['telephone']);
+                $contacts[] = new ContactModel($row['id'], $row['nom'], $row['prenom'], $row['email'], $row['telephone'], $row['id_licencie']);
             }
 
             return $contacts;
@@ -60,8 +60,8 @@ class ContactDAO
     public function update(ContactModel $contact)
     {
         try {
-            $stmt = $this->connexion->pdo->prepare("UPDATE contacts SET nom = ?, prenom = ?, email = ?, telephone = ? WHERE id = ?");
-            $stmt->execute([$contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(), $contact->getId()]);
+            $stmt = $this->connexion->pdo->prepare("UPDATE contacts SET nom = ?, prenom = ?, email = ?, telephone = ?, id_licencie = ? WHERE id = ?");
+            $stmt->execute([$contact->getNom(), $contact->getPrenom(), $contact->getEmail(), $contact->getTelephone(), $contact->getIdLicencie(), $contact->getId()]);
             return true;
         } catch (PDOException $e) {
             // Gestion des erreurs

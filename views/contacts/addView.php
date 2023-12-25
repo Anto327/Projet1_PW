@@ -24,7 +24,15 @@
         <label for="telephone">Téléphone :</label>
         <input type="text" id="telephone" name="telephone" required><br>
 
-        <input type="submit" name="action" value="Ajouter">
+        <label for="id_licencie">Licencié :</label>
+        <select id="id_licencie" name="id_licencie" required>
+            <option value="">-- Choisir un licencié --</option>
+            <?php foreach ($licencies as $licencie) : ?>
+                <option value="<?php echo $licencie->getId(); ?>"><?php echo $licencie->getNomComplet(); ?></option>
+            <?php endforeach; ?>
+        </select><br>
+
+        <button type="submit">Ajouter</button>
     </form>
 </body>
 

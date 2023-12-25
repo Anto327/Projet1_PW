@@ -19,7 +19,7 @@
             <label for="code">Code :</label>
             <input type="text" id="code" name="code" value="<?php echo $categorie->getCode(); ?>" required><br>
 
-            <input type="submit" value="Modifier">
+            <button type="submit">Modifier</button>
         </form>
     <?php else : ?>
         <p>Le categorie n'a pas été trouvée.</p>

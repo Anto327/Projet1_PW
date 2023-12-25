@@ -3,21 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Supprimer un Contact</title>
+    <title>Supprimer un licencié</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
-    <h1>Supprimer un Contact</h1>
-    <a href="index.php?page=contacts">Retour à la liste des contacts</a>
+    <h1>Supprimer un licencié</h1>
+    <a href="index.php?page=licencies">Retour à la liste des licencies</a>
 
-    <?php if ($contact) : ?>
-        <p>Voulez-vous vraiment supprimer le contact <strong>"<?php echo $contact->getNomComplet(); ?>"</strong> ?</p>
-        <form action="index.php?page=contacts&action=delete&id=<?php echo $contact->getId(); ?>" method="post">
-            <input type="submit" value="Oui, Supprimer">
+    <?php if ($licencie) : ?>
+        <p>Voulez-vous vraiment supprimer le licencié <strong>"<?php echo $licencie->getNomComplet(); ?>"</strong> ?</p>
+        <form action="index.php?page=licencies&action=delete&id=<?php echo $licencie->getId(); ?>" method="post">
+            <button type="submit">Oui, Supprimer</button>
         </form>
     <?php else : ?>
-        <p>Le contact n'a pas été trouvé.</p>
+        <p>Le licencie n'a pas été trouvé.</p>
     <?php endif; ?>
 
 </body>

@@ -3,21 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Détails du Contact</title>
+    <title>Détails du licencié</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
-    <h1>Détails du Contact</h1>
-    <a href="index.php?page=contacts">Retour à la liste des contacts</a>
+    <h1>Détails du licencié</h1>
+    <a href="index.php?page=licencies">Retour à la liste des licencies</a>
 
-    <?php if ($contact) : ?>
-        <p><strong>Nom :</strong> <?php echo $contact->getNom(); ?></p>
-        <p><strong>Prénom :</strong> <?php echo $contact->getPrenom(); ?></p>
-        <p><strong>Email :</strong> <?php echo $contact->getEmail(); ?></p>
-        <p><strong>Téléphone :</strong> <?php echo $contact->getTelephone(); ?></p>
+    <?php if ($licencie) : ?>
+        <p><strong>No licence :</strong> <?php echo $licencie->getNumLicence(); ?></p>
+        <p><strong>Nom :</strong> <?php echo $licencie->getNom(); ?></p>
+        <p><strong>Prénom :</strong> <?php echo $licencie->getPrenom(); ?></p>
+        <p><strong>Catégorie :</strong> <?php echo $licencie->getIdCategorie(); ?></p>
     <?php else : ?>
-        <p>Le contact n'a pas été trouvé.</p>
+        <p>Le licencie n'a pas été trouvé.</p>
     <?php endif; ?>
 </body>
 

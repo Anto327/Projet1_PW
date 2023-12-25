@@ -18,7 +18,7 @@
         <label for="code">Code :</label>
         <input type="text" id="code" name="code" required><br>
 
-        <input type="submit" name="action" value="Ajouter">
+        <button type="submit">Ajouter</button>
     </form>
 </body>
 

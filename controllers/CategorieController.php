@@ -75,7 +75,7 @@ class CategorieController extends Controller
             // Appeler la méthode du modèle (ContactDAO) pour mettre à jour le categorie
             if ($this->categorieDAO->update($categorie)) {
                 // Rediriger vers la page de détails du categorie après la modification
-                header('Location:index.php?page=categories&action=update&id=' . $id);
+                header('Location:index.php?page=categories&action=edit&id=' . $id);
                 exit();
             } else {
                 // Gérer les erreurs de mise à jour du categorie

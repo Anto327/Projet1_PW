@@ -25,7 +25,15 @@
             <label for="telephone">Téléphone :</label>
             <input type="text" id="telephone" name="telephone" value="<?php echo $contact->getTelephone(); ?>" required><br>
 
-            <input type="submit" value="Modifier">
+            <label for="id_licencie">Licencié :</label>
+            <select id="id_licencie" name="id_licencie" required>
+                <option value="">-- Choisir un licencié --</option>
+                <?php foreach ($licencies as $licencie) : ?>
+                    <option value="<?php echo $licencie->getId(); ?>" <?php if ($licencie->getId() == $contact->getIdLicencie()) echo "selected"; ?>><?php echo $licencie->getNomComplet(); ?></option>
+                <?php endforeach; ?>
+            </select><br>
+
+            <button type="submit">Modifier</button>
         </form>
     <?php else : ?>
         <p>Le contact n'a pas été trouvé.</p>

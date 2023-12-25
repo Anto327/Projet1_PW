@@ -23,6 +23,7 @@ class LicencieController extends Controller
 
     public function edit($id)
     {
+        $categories = $this->categorieDAO->getAll();
         $licencie = $this->licencieDAO->getById($id);
         include('./views/licencies/editView.php');
     }
@@ -82,7 +83,7 @@ class LicencieController extends Controller
             // Appeler la méthode du modèle (ContactDAO) pour mettre à jour le licencie
             if ($this->licencieDAO->update($licencie)) {
                 // Rediriger vers la page de détails du licencie après la modification
-                header('Location:index.php?page=licencies&action=update&id=' . $id);
+                header('Location:index.php?page=licencies&action=edit&id=' . $id);
                 exit();
             } else {
                 // Gérer les erreurs de mise à jour du licencie

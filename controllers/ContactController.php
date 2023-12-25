@@ -12,6 +12,7 @@ class ContactController extends Controller
 
     public function add()
     {
+        $licencies = $this->licencieDAO->getAll();
         include('./views/contacts/addView.php');
     }
 
@@ -23,6 +24,7 @@ class ContactController extends Controller
 
     public function edit($id)
     {
+        $licencies =  $this->licencieDAO->getAll();
         $contact = $this->contactDAO->getById($id);
         include('./views/contacts/editView.php');
     }
@@ -35,10 +37,11 @@ class ContactController extends Controller
             $prenom = $_POST['prenom'];
             $email = $_POST['email'];
             $telephone = $_POST['telephone'];
+            $id_licencie = $_POST['id_licencie'];
 
             // Valider les données du formulaire (ajoutez des validations si nécessaire)
 
-            $contact = new ContactModel(0, $nom, $prenom, $email, $telephone);
+            $contact = new ContactModel(0, $nom, $prenom, $email, $telephone, $id_licencie);
             if ($this->contactDAO->create($contact)) {
                 // Rediriger vers la page d'accueil après l'ajout
                 header('Location:index?page=contacts');
@@ -82,7 +85,7 @@ class ContactController extends Controller
             // Appeler la méthode du modèle (ContactDAO) pour mettre à jour le contact
             if ($this->contactDAO->update($contact)) {
                 // Rediriger vers la page de détails du contact après la modification
-                header('Location:index.php?page=contacts&action=update&id=' . $id);
+                header('Location:index.php?page=contacts&action=edit&id=' . $id);
                 exit();
             } else {
                 // Gérer les erreurs de mise à jour du contact

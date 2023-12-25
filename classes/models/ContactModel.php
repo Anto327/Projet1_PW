@@ -8,14 +8,16 @@ class ContactModel
     private $prenom;
     private $email;
     private $telephone;
+    private $id_licencie;
 
-    public function __construct($id, $nom, $prenom, $email, $telephone)
+    public function __construct($id, $nom, $prenom, $email, $telephone, $id_licencie)
     {
         $this->id = $id;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->email = $email;
         $this->telephone = $telephone;
+        $this->id_licencie = $id_licencie;
     }
 
     // Getters
@@ -49,6 +51,11 @@ class ContactModel
         return $this->telephone;
     }
 
+    public function getIdLicencie()
+    {
+        return $this->id_licencie;
+    }
+
     // Setters
     public function setNom($nom)
     {
@@ -68,5 +75,10 @@ class ContactModel
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
+    }
+
+    public function setIdLicencie($id_licencie)
+    {
+        $this->$id_licencie = $id_licencie;
     }
 }

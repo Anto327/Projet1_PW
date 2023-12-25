@@ -39,6 +39,11 @@ class LicencieModel
         return $this->prenom;
     }
 
+    public function getNomComplet()
+    {
+        return "$this->nom $this->prenom";
+    }
+
     public function getIdCategorie()
     {
         return $this->id_categorie;
