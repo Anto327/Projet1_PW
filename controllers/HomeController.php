@@ -1,16 +1,34 @@
 <?php
 
-class HomeController
+class HomeController extends Controller
 {
-    private $contactDAO;
-
-    public function __construct(ContactDAO $contactDAO)
-    {
-        $this->contactDAO = $contactDAO;
-    }
-
     public function index()
     {
         include('./views/home.php');
+    }
+
+    public function add()
+    {
+    }
+
+    public function show($id)
+    {
+    }
+
+    public function edit($id)
+    {
+    }
+
+    // Méthodes pour effectuer des opérations
+    public function create()
+    {
+    }
+
+    public function update($id)
+    {
+    }
+
+    public function delete($id)
+    {
     }
 }

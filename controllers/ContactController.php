@@ -1,41 +1,30 @@
 <?php
 
-require_once("./config/Connexion.php");
-require_once("./classes/models/ContactModel.php");
-require_once("./classes/dao/ContactDAO.php");
 
-class ContactController
+class ContactController extends Controller
 {
-    private $contactDAO;
-
-    public function __construct(ContactDAO $contactDAO)
-    {
-        $this->contactDAO = $contactDAO;
-    }
 
     public function index()
     {
         $contacts =  $this->contactDAO->getAll();
-        include('./views/contacts/list_contact.php');
+        include('./views/contacts/homeView.php');
     }
 
     public function add()
     {
-        include('./views/contacts/add_contact.php');
+        include('./views/contacts/addView.php');
     }
 
-    public function show()
+    public function show($id)
     {
-        $id = $_GET['id'];
         $contact = $this->contactDAO->getById($id);
-        include('./views/contacts/view_contact.php');
+        include('./views/contacts/showView.php');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        $id = $_GET['id'];
         $contact = $this->contactDAO->getById($id);
-        include('./views/contacts/edit_contact.php');
+        include('./views/contacts/editView.php');
     }
 
     public function create()
@@ -52,16 +41,16 @@ class ContactController
             $nouveauContact = new ContactModel(0, $nom, $prenom, $email, $telephone);
             if ($this->contactDAO->create($nouveauContact)) {
                 // Rediriger vers la page d'accueil après l'ajout
-                header('Location:?page=contacts');
+                header('Location:index?page=contacts');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de contact
-                echo "Erreur lors de l'ajout du contact.";
+                echo "\nErreur lors de l'ajout du contact.";
             }
         }
 
         // Inclure la vue pour afficher le formulaire d'ajout de contact
-        include('./views/create_contact.php');
+        include('./views/contacts/addView.php');
     }
 
     public function update($id)
@@ -102,7 +91,7 @@ class ContactController
         }
 
         // Inclure la vue pour afficher le formulaire de modification du contact
-        include('./views/contacts/edit_contact.php');
+        include('./views/contacts/editView.php');
     }
 
     public function delete($id)
@@ -129,6 +118,6 @@ class ContactController
         }
 
         // Inclure la vue pour afficher la confirmation de suppression du contact
-        include('views/contacts/delete_contact.php');
+        include('views/contacts/deleteView.php');
     }
 }

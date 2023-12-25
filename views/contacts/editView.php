@@ -13,8 +13,6 @@
 
     <?php if ($contact) : ?>
         <form action="index.php?page=contacts&action=update&id=<?php echo $contact->getId(); ?>" method="post">
-            <input type="hidden" id="id" name="id" value="<?php echo $contact->getId(); ?>" required>
-
             <label for="nom">Nom :</label>
             <input type="text" id="nom" name="nom" value="<?php echo $contact->getNom(); ?>" required><br>
 

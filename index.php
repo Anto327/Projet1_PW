@@ -1,12 +1,30 @@
 <?php
 
 // Imports
-require_once("config/Connexion.php");
-require_once("classes/models/ContactModel.php");
-require_once("classes/dao/ContactDAO.php");
-// Classes
-$contactDAO = new ContactDAO(new Connexion());
+require_once("./config/Connexion.php");
 
+// Modèles & DAOs
+require_once("./classes/models/CategorieModel.php");
+require_once("./classes/dao/CategorieDAO.php");
+
+require_once("./classes/models/ContactModel.php");
+require_once("./classes/dao/ContactDAO.php");
+
+require_once("./classes/models/LicencieModel.php");
+require_once("./classes/dao/LicencieDAO.php");
+
+require_once("./classes/models/EducateurModel.php");
+require_once("./classes/dao/EducateurDAO.php");
+
+// Controllers
+require_once("./controllers/Controller.php");
+
+// Classes
+$connexion = new Connexion();
+$categorieDAO = new CategorieDAO($connexion);
+$contactDAO = new ContactDAO($connexion);
+$licencieDAO = new LicencieDAO($connexion);
+$educateurDAO = new EducateurDAO($connexion);
 
 // Routage
 if (isset($_GET['page'])) {
@@ -18,7 +36,7 @@ if (isset($_GET['page'])) {
 if (isset($_GET['action'])) {
     $action = $_GET['action'];
 } else {
-    $action = 'index'; // Page par défaut
+    $action = 'index'; // Action par défaut
 }
 
 // Définition des controlleurs
@@ -38,7 +56,7 @@ if (array_key_exists($page, $controllers)) {
     echo "<a href='index.php?page=home'>Accueil</a><br>";
     echo "Vous appelez ce controller : $controllerName";
     // Instancier le controleur
-    $controller = new $controllerName($contactDAO);
+    $controller = new $controllerName($categorieDAO, $contactDAO, $licencieDAO, $educateurDAO);
     // Exécuter la méthode par défaut du contréleur (par exemple, index() ou home())
     $controller->$action(isset($_GET['id']) ? $_GET['id'] : null); // Vous pouvez ajuster la méthode par défaut selon votre convention
     // c'est l'interet de action qui permet d'appeler une méthode particuliere d'un controller si il en possede plusieurs
