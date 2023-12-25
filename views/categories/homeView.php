@@ -35,7 +35,7 @@
             </tbody>
         </table>
     <?php else : ?>
-        <p>Aucun catégorie trouvée.</p>
+        <p>Aucune catégorie trouvée.</p>
     <?php endif; ?>
 </body>
 

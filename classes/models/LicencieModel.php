@@ -8,16 +8,14 @@ class LicencieModel
     private $nom;
     private $prenom;
     private $id_categorie;
-    private $id_contact;
 
-    public function __construct($id, $num_licence, $nom, $prenom, $id_categorie, $id_contact)
+    public function __construct($id, $num_licence, $nom, $prenom, $id_categorie)
     {
         $this->id = $id;
         $this->num_licence = $num_licence;
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->id_categorie = $id_categorie;
-        $this->id_contact = $id_contact;
     }
 
     // Getters
@@ -46,11 +44,6 @@ class LicencieModel
         return $this->id_categorie;
     }
 
-    public function getIdContact()
-    {
-        return $this->id_contact;
-    }
-
     // Setters
     public function setNumLicence($num_licence)
     {
@@ -70,10 +63,5 @@ class LicencieModel
     public function setIdCategorie($id_categorie)
     {
         $this->id_categorie = $id_categorie;
-    }
-
-    public function setIdContact($id_contact)
-    {
-        $this->id_contact = $id_contact;
     }
 }

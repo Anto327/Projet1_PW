@@ -38,8 +38,8 @@ class ContactController extends Controller
 
             // Valider les données du formulaire (ajoutez des validations si nécessaire)
 
-            $nouveauContact = new ContactModel(0, $nom, $prenom, $email, $telephone);
-            if ($this->contactDAO->create($nouveauContact)) {
+            $contact = new ContactModel(0, $nom, $prenom, $email, $telephone);
+            if ($this->contactDAO->create($contact)) {
                 // Rediriger vers la page d'accueil après l'ajout
                 header('Location:index?page=contacts');
                 exit();

@@ -13,8 +13,8 @@ class LicencieDAO
     public function create(LicencieModel $licencie)
     {
         try {
-            $stmt = $this->connexion->pdo->prepare("INSERT INTO licencies (num_licence, nom, prenom, id_categorie, id_contact) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$licencie->getNumLicence(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getIdCategorie(), $licencie->getIdContact()]);
+            $stmt = $this->connexion->pdo->prepare("INSERT INTO licencies (num_licence, nom, prenom, id_categorie) VALUES (?, ?, ?, ?, ?)");
+            $stmt->execute([$licencie->getNumLicence(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getIdCategorie()]);
             return true;
         } catch (PDOException $e) {
             // Gestion des erreurs
@@ -30,7 +30,7 @@ class LicencieDAO
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($row) return new LicencieModel($row['id'], $row['num_licence'], $row['nom'], $row['prenom'], $row['id_categorie'], $row['id_contact']);
+            if ($row) return new LicencieModel($row['id'], $row['num_licence'], $row['nom'], $row['prenom'], $row['id_categorie']);
             return null; // Aucun licencié trouvé avec cet ID
         } catch (PDOException $e) {
             // Gestion des erreurs
@@ -46,7 +46,7 @@ class LicencieDAO
             $licencies = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $licencies[] = new LicencieModel($row['id'], $row['num_licence'], $row['nom'], $row['prenom'], $row['id_categorie'], $row['id_contact']);
+                $licencies[] = new LicencieModel($row['id'], $row['num_licence'], $row['nom'], $row['prenom'], $row['id_categorie']);
             }
 
             return $licencies;
@@ -60,8 +60,8 @@ class LicencieDAO
     public function update(LicencieModel $licencie)
     {
         try {
-            $stmt = $this->connexion->pdo->prepare("UPDATE licencies SET num_licence = ?, nom = ?, prenom = ?, id_categorie = ?, id_contact = ? WHERE id = ?");
-            $stmt->execute([$licencie->getNumLicence(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getIdCategorie(), $licencie->getIdContact(), $licencie->getId()]);
+            $stmt = $this->connexion->pdo->prepare("UPDATE licencies SET num_licence = ?, nom = ?, prenom = ?, id_categorie = ? WHERE id = ?");
+            $stmt->execute([$licencie->getNumLicence(), $licencie->getNom(), $licencie->getPrenom(), $licencie->getIdCategorie(), $licencie->getId()]);
             return true;
         } catch (PDOException $e) {
             // Gestion des erreurs

@@ -16,7 +16,7 @@
             <label for="nom">Nom :</label>
             <input type="text" id="nom" name="nom" value="<?php echo $categorie->getNom(); ?>" required><br>
 
-            <label for="code">Prénom :</label>
+            <label for="code">Code :</label>
             <input type="text" id="code" name="code" value="<?php echo $categorie->getCode(); ?>" required><br>
 
             <input type="submit" value="Modifier">

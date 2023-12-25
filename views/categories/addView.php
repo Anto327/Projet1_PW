@@ -15,7 +15,7 @@
         <label for="nom">Nom :</label>
         <input type="text" id="nom" name="nom" required><br>
 
-        <label for="code">Prénom :</label>
+        <label for="code">Code :</label>
         <input type="text" id="code" name="code" required><br>
 
         <input type="submit" name="action" value="Ajouter">
