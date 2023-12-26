@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Liste des licenciés</title>
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 
 <body>
@@ -25,14 +25,14 @@
             <tbody>
                 <?php foreach ($licencies as $licencie) : ?>
                     <tr>
-                        <td><?php echo $licencie->getNumLicence(); ?></td>
-                        <td><?php echo $licencie->getNom(); ?></td>
-                        <td><?php echo $licencie->getPrenom(); ?></td>
-                        <td><?php echo $licencie->getIdCategorie(); ?></td>
+                        <td><?= $licencie->getNumLicence(); ?></td>
+                        <td><?= $licencie->getNom(); ?></td>
+                        <td><?= $licencie->getPrenom(); ?></td>
+                        <td><?= $licencie->getIdCategorie(); ?></td>
                         <td>
-                            <a href="index.php?page=licencies&action=show&id=<?php echo $licencie->getId(); ?>">Voir</a>
-                            <a href="index.php?page=licencies&action=edit&id=<?php echo $licencie->getId(); ?>">Modifier</a>
-                            <a href="index.php?page=licencies&action=delete&id=<?php echo $licencie->getId(); ?>">Supprimer</a>
+                            <a href="index.php?page=licencies&action=show&id=<?= $licencie->getId(); ?>">Voir</a>
+                            <a href="index.php?page=licencies&action=edit&id=<?= $licencie->getId(); ?>">Modifier</a>
+                            <a href="index.php?page=licencies&action=delete&id=<?= $licencie->getId(); ?>">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

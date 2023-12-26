@@ -6,13 +6,15 @@ class EducateurModel extends LicencieModel
     private $email;
     private $password;
     private $is_admin;
+    private $id_licencie;
 
-    public function __construct($id, $num_licence, $nom, $prenom, $id_categorie, $id_contact, $email, $password, $is_admin)
+    public function __construct($id, $num_licence, $nom, $prenom, $id_categorie, $email, $password, $is_admin, $id_licencie)
     {
-        parent::__construct($id, $num_licence, $nom, $prenom, $id_categorie, $id_contact);
+        parent::__construct($id, $num_licence, $nom, $prenom, $id_categorie);
         $this->email = $email;
         $this->password = $password;
         $this->is_admin = $is_admin;
+        $this->id_licencie = $id_licencie;
     }
 
     // Getters
@@ -21,9 +23,19 @@ class EducateurModel extends LicencieModel
         return $this->email;
     }
 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
     public function isAdmin()
     {
         return $this->is_admin;
+    }
+
+    public function getIdLicencie()
+    {
+        return $this->id_licencie;
     }
 
     // Setters
@@ -40,5 +52,10 @@ class EducateurModel extends LicencieModel
     public function setIsAdmin($is_admin)
     {
         $this->is_admin = $is_admin;
+    }
+
+    public function setIdLicencie($id_licencie)
+    {
+        $this->$id_licencie = $id_licencie;
     }
 }

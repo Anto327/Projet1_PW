@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter une catégorie</title>
-    <link rel="stylesheet" href="../../css/styles.css">
+    <title>Ajouter une Catégorie</title>
+    <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 
 <body>
-    <h1>Ajouter une catégorie</h1>
+    <h1>Ajouter une Catégorie</h1>
     <a href="index.php?page=categories">Retour à la liste des catégories</a>
 
     <form action="index.php?page=categories&action=create" method="post">

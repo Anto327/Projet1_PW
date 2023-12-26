@@ -3,12 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Liste des catégories</title>
-    <link rel="stylesheet" href="../../css/styles.css">
+    <title>Liste des Catégories</title>
+    <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 
 <body>
-    <h1>Liste des catégories</h1>
+    <h1>Liste des Catégories</h1>
     <a href="index.php?page=categories&action=add">Ajouter une catégorie</a>
 
     <?php if (!empty($categories)) : ?>
@@ -23,12 +23,12 @@
             <tbody>
                 <?php foreach ($categories as $categorie) : ?>
                     <tr>
-                        <td><?php echo $categorie->getNom(); ?></td>
-                        <td><?php echo $categorie->getCode(); ?></td>
+                        <td><?= $categorie->getNom(); ?></td>
+                        <td><?= $categorie->getCode(); ?></td>
                         <td>
-                            <a href="index.php?page=categories&action=show&id=<?php echo $categorie->getId(); ?>">Voir</a>
-                            <a href="index.php?page=categories&action=edit&id=<?php echo $categorie->getId(); ?>">Modifier</a>
-                            <a href="index.php?page=categories&action=delete&id=<?php echo $categorie->getId(); ?>">Supprimer</a>
+                            <a href="index.php?page=categories&action=show&id=<?= $categorie->getId(); ?>">Voir</a>
+                            <a href="index.php?page=categories&action=edit&id=<?= $categorie->getId(); ?>">Modifier</a>
+                            <a href="index.php?page=categories&action=delete&id=<?= $categorie->getId(); ?>">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

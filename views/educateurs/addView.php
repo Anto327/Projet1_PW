@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter un licencié</title>
+    <title>Ajouter un Educateur</title>
     <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 
 <body>
-    <h1>Ajouter un licencié</h1>
-    <a href="index.php?page=licencies">Retour à la liste des licenciés</a>
+    <h1>Ajouter un Educateur</h1>
+    <a href="index.php?page=educateurs">Retour à la liste des éducateur</a>
 
-    <form action="index.php?page=licencies&action=create" method="post">
+    <form action="index.php?page=educateurs&action=create" method="post">
         <label for="num_licence">Numéro de licence :</label>
         <input type="number" id="num_licence" name="num_licence" required><br>
 
@@ -28,6 +28,15 @@
                 <option value="<?= $categorie->getId(); ?>"><?= $categorie->getNom(); ?></option>
             <?php endforeach; ?>
         </select><br>
+
+        <label for="email">Email :</label>
+        <input type="text" id="email" name="email" required><br>
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <label for="is_admin">Accès admin</label>
+        <input type="checkbox" id="is_admin" name="is_admin" required><br>
 
         <button type="submit">Ajouter</button>
     </form>

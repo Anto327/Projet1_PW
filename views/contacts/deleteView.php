@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Supprimer un Contact</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../assets/styles.css">
 </head>
 
 <body>
@@ -12,8 +12,8 @@
     <a href="index.php?page=contacts">Retour à la liste des contacts</a>
 
     <?php if ($contact) : ?>
-        <p>Voulez-vous vraiment supprimer le contact <strong>"<?php echo $contact->getNomComplet(); ?>"</strong> ?</p>
-        <form action="index.php?page=contacts&action=delete&id=<?php echo $contact->getId(); ?>" method="post">
+        <p>Voulez-vous vraiment supprimer le contact <strong>"<?= $contact->getNomComplet(); ?>"</strong> ?</p>
+        <form action="index.php?page=contacts&action=delete&id=<?= $contact->getId(); ?>" method="post">
             <button type="submit">Oui, Supprimer</button>
         </form>
     <?php else : ?>

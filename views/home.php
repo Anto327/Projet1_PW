@@ -17,7 +17,7 @@ $contacts =  $contactDAO->getAll();
 <head>
     <meta charset="UTF-8">
     <title>Licenciés</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../assets/styles.css">
 </head>
 
 <body>

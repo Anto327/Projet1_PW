@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Liste des Contacts</title>
-    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 
 <body>
@@ -25,14 +25,14 @@
             <tbody>
                 <?php foreach ($contacts as $contact) : ?>
                     <tr>
-                        <td><?php echo $contact->getNom(); ?></td>
-                        <td><?php echo $contact->getPrenom(); ?></td>
-                        <td><?php echo $contact->getEmail(); ?></td>
-                        <td><?php echo $contact->getTelephone(); ?></td>
+                        <td><?= $contact->getNom(); ?></td>
+                        <td><?= $contact->getPrenom(); ?></td>
+                        <td><?= $contact->getEmail(); ?></td>
+                        <td><?= $contact->getTelephone(); ?></td>
                         <td>
-                            <a href="index.php?page=contacts&action=show&id=<?php echo $contact->getId(); ?>">Voir</a>
-                            <a href="index.php?page=contacts&action=edit&id=<?php echo $contact->getId(); ?>">Modifier</a>
-                            <a href="index.php?page=contacts&action=delete&id=<?php echo $contact->getId(); ?>">Supprimer</a>
+                            <a href="index.php?page=contacts&action=show&id=<?= $contact->getId(); ?>">Voir</a>
+                            <a href="index.php?page=contacts&action=edit&id=<?= $contact->getId(); ?>">Modifier</a>
+                            <a href="index.php?page=contacts&action=delete&id=<?= $contact->getId(); ?>">Supprimer</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
