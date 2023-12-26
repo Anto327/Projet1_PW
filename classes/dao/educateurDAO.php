@@ -35,7 +35,7 @@ class EducateurDAO
     public function getById($id)
     {
         try {
-            $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateurs JOIN licencies ON educateurs.id_licencie = licencies.id WHERE educateurs.id = ?");
+            $stmt = $this->connexion->pdo->prepare("SELECT educateurs.id, licencies.num_licence, licencies.nom, licencies.prenom, licencies.id_categorie, educateurs.email, educateurs.password, educateurs.is_admin, educateurs.id_licencie FROM educateurs JOIN licencies ON educateurs.id_licencie = licencies.id WHERE educateurs.id = ?");
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -51,8 +51,7 @@ class EducateurDAO
     public function getAll()
     {
         try {
-            // $stmt = $this->connexion->pdo->query("SELECT educateurs.id, licencies.num_licence, licencies.nom, licencies.prenom, licencies.id_categorie, educateurs.email, educateurs.password, educateurs.is_admin, educateurs.id_licencie FROM educateurs JOIN licencies ON educateurs.id_licencie = licencies.id");
-            $stmt = $this->connexion->pdo->query("SELECT * FROM educateurs JOIN licencies ON educateurs.id_licencie = licencies.id");
+            $stmt = $this->connexion->pdo->query("SELECT educateurs.id, licencies.num_licence, licencies.nom, licencies.prenom, licencies.id_categorie, educateurs.email, educateurs.password, educateurs.is_admin, educateurs.id_licencie FROM educateurs JOIN licencies ON educateurs.id_licencie = licencies.id");
             $educateurs = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -70,11 +69,16 @@ class EducateurDAO
     public function update(EducateurModel $educateur)
     {
         try {
-            $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET num_licence = ?, nom = ?, prenom = ?, id_categorie = ? WHERE id = ?");
-            $stmt->execute([$educateur->getNumLicence(), $educateur->getNom(), $educateur->getPrenom(), $educateur->getIdCategorie(), $educateur->getId()]);
+            $stmt = $this->connexion->pdo->prepare("UPDATE licencies SET num_licence = ?, nom = ?, prenom = ?, id_categorie = ? WHERE id = ?");
+            $stmt->execute([$educateur->getNumLicence(), $educateur->getNom(), $educateur->getPrenom(), $educateur->getIdCategorie(), $educateur->getIdLicencie()]);
+
+            $stmt = $this->connexion->pdo->prepare("UPDATE educateurs SET email = ?, password = ?, is_admin = ? WHERE id = ?");
+            $stmt->execute([$educateur->getEmail(), $educateur->getPassword(), $educateur->isAdmin(), $educateur->getId()]);
+
             return true;
         } catch (PDOException $e) {
             // Gestion des erreurs
+            echo $e;
             return false;
         }
     }

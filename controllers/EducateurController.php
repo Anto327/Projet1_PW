@@ -37,7 +37,7 @@ class EducateurController extends Controller
             $id_categorie = $_POST['id_categorie'];
             $email = $_POST['email'];
             $password = $_POST['password'];
-            $is_admin = $_POST['is_admin'] == 'on' ? true : false;
+            $is_admin = $_POST['is_admin'] == 'on' ? 1 : 0;
 
             // Valider les données du formulaire (ajoutez des validations si nécessaire)
 
@@ -51,16 +51,76 @@ class EducateurController extends Controller
                 echo "\nErreur lors de l'ajout du educateur.";
             }
         }
-
-        // Inclure la vue pour afficher le formulaire d'ajout de educateur
-        include('./views/educateurs/addView.php');
     }
 
     public function update($id)
     {
+        // Récupérer le educateur à modifier en utilisant son ID
+        $educateur = $this->educateurDAO->getById($id);
+
+        if (!$educateur) {
+            // Le educateur n'a pas été trouvé, vous pouvez rediriger ou afficher un message d'erreur
+            echo "L'éducateur n'a pas été trouvé.";
+            return;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Récupérer les données du formulaire
+            $num_licence = $_POST['num_licence'];
+            $nom = $_POST['nom'];
+            $prenom = $_POST['prenom'];
+            $id_categorie = $_POST['id_categorie'];
+            $email = $_POST['email'];
+
+            // Valider les données du formulaire (ajoutez des validations si nécessaire)
+
+            // Mettre à jour les détails du educateur
+            $educateur->setNumLicence($num_licence);
+            $educateur->setNom($nom);
+            $educateur->setPrenom($prenom);
+            $educateur->setIdCategorie($id_categorie);
+            $educateur->setEmail($email);
+            $educateur->setIsAdmin(isset($_POST['is_admin']) ? 1 : 0);
+            if (isset($_POST['password'])) {
+                $password = $_POST['password'];
+                $educateur->setPassword($password);
+            }
+            // Appeler la méthode du modèle (ContactDAO) pour mettre à jour le educateur
+            if ($this->educateurDAO->update($educateur)) {
+                // Rediriger vers la page de détails du educateur après la modification
+                header('Location:index.php?page=educateurs&action=edit&id=' . $id);
+                exit();
+            } else {
+                // Gérer les erreurs de mise à jour du educateur
+                echo "Erreur lors de la modification du educateur.";
+            }
+        }
     }
 
     public function delete($id)
     {
+        // Récupérer le educateur à supprimer en utilisant son ID
+        $educateur = $this->educateurDAO->getById($id);
+
+        if (!$educateur) {
+            // Le educateur n'a pas été trouvé, vous pouvez rediriger ou afficher un message d'erreur
+            echo "Le educateur n'a pas été trouvé.";
+            return;
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Supprimer le educateur en appelant la méthode du modèle (ContactDAO)
+            if ($this->educateurDAO->deleteById($id)) {
+                // Rediriger vers la page d'accueil après la suppression
+                header('Location:index.php?page=educateurs');
+                exit();
+            } else {
+                // Gérer les erreurs de suppression du educateur
+                echo "Erreur lors de la suppression de l'éducateur.";
+            }
+        }
+
+        // Inclure la vue pour afficher la confirmation de suppression du educateur
+        include('views/educateurs/deleteView.php');
     }
 }

@@ -36,7 +36,7 @@
         <input type="password" id="password" name="password" required><br>
 
         <label for="is_admin">Accès admin</label>
-        <input type="checkbox" id="is_admin" name="is_admin" required><br>
+        <input type="checkbox" id="is_admin" name="is_admin"><br>
 
         <button type="submit">Ajouter</button>
     </form>

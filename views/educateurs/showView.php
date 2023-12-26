@@ -3,22 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Détails du licencié</title>
+    <title>Détails de l'Educateur</title>
     <link rel="stylesheet" href="../assets/styles.css">
 </head>
 
 <body>
-    <h1>Détails du licencié</h1>
-    <a href="index.php?page=licencies">Retour à la liste des licencies</a>
+    <h1>Détails de l'Educateur</h1>
+    <a href="index.php?page=educateurs">Retour à la liste des éducateurs</a>
 
-    <?php if ($licencie) : ?>
-        <p><strong>No licence :</strong> <?= $licencie->getNumLicence(); ?></p>
-        <p><strong>Nom :</strong> <?= $licencie->getNom(); ?></p>
-        <p><strong>Prénom :</strong> <?= $licencie->getPrenom(); ?></p>
-        <p><strong>Catégorie :</strong> <?= $licencie->getIdCategorie(); ?></p>
+    <?php if ($educateur) : ?>
+        <p><strong>No licence :</strong> <?= $educateur->getNumLicence() ?></p>
+        <p><strong>Nom :</strong> <?= $educateur->getNom() ?></p>
+        <p><strong>Prénom :</strong> <?= $educateur->getPrenom() ?></p>
+        <p><strong>Catégorie :</strong> <?= $educateur->getIdCategorie() ?></p>
+        <p><strong>Email :</strong> <?= $educateur->getEmail() ?></p>
+        <p><strong>Accès admin :</strong> <?= $educateur->isAdmin() ? 'Oui' : 'Non' ?></p>
     <?php else : ?>
-        <p>Le licencie n'a pas été trouvé.</p>
-    <?php endif; ?>
+        <p>L'éducateur n'a pas été trouvé.</p>
+    <?php endif ?>
 </body>
 
 </html>
