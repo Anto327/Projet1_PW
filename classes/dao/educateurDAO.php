@@ -17,8 +17,6 @@ class EducateurDAO
             $stmt->execute([$educateur->getNumLicence(), $educateur->getNom(), $educateur->getPrenom(), $educateur->getIdCategorie()]);
 
             $id_licencie = $this->connexion->pdo->lastInsertId();
-            // var_dump($id_licencie);
-            // $educateur->setIdLicencie($id_licencie);
 
             $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs (email, password, is_admin, id_licencie) VALUES (?, ?, ?, ?)");
             $stmt->execute([$educateur->getEmail(), $educateur->getPassword(), $educateur->isAdmin(), $id_licencie]);
