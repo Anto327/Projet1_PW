@@ -17,14 +17,16 @@ class EducateurDAO
             $stmt->execute([$educateur->getNumLicence(), $educateur->getNom(), $educateur->getPrenom(), $educateur->getIdCategorie()]);
 
             $id_licencie = $this->connexion->pdo->lastInsertId();
-            $educateur->setIdLicencie($id_licencie);
+            // var_dump($id_licencie);
+            // $educateur->setIdLicencie($id_licencie);
 
             $stmt = $this->connexion->pdo->prepare("INSERT INTO educateurs (email, password, is_admin, id_licencie) VALUES (?, ?, ?, ?)");
-            $stmt->execute([$educateur->getEmail(), $educateur->getPassword(), $educateur->isAdmin(), $educateur->getIdLicencie()]);
+            $stmt->execute([$educateur->getEmail(), $educateur->getPassword(), $educateur->isAdmin(), $id_licencie]);
 
             return true;
         } catch (PDOException $e) {
             // Gestion des erreurs
+            echo ($e);
             return false;
         }
     }
@@ -49,12 +51,12 @@ class EducateurDAO
     public function getAll()
     {
         try {
-            $stmt = $this->connexion->pdo->prepare("SELECT * FROM educateurs JOIN licencies ON educateurs.id_licencie = licencies.id");
+            // $stmt = $this->connexion->pdo->query("SELECT educateurs.id, licencies.num_licence, licencies.nom, licencies.prenom, licencies.id_categorie, educateurs.email, educateurs.password, educateurs.is_admin, educateurs.id_licencie FROM educateurs JOIN licencies ON educateurs.id_licencie = licencies.id");
+            $stmt = $this->connexion->pdo->query("SELECT * FROM educateurs JOIN licencies ON educateurs.id_licencie = licencies.id");
             $educateurs = [];
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $educateurs[] = new
-                    EducateurModel($row['id'], $row['num_licence'], $row['nom'], $row['prenom'], $row['id_categorie'], $row['email'], $row['password'], $row['is_admin'], $row['id_licencie']);
+                $educateurs[] = new EducateurModel($row['id'], $row['num_licence'], $row['nom'], $row['prenom'], $row['id_categorie'], $row['email'], $row['password'], $row['is_admin'], $row['id_licencie']);
             }
 
             return $educateurs;

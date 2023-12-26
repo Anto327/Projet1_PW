@@ -29,3 +29,7 @@ CREATE TABLE `contacts` (
   `id_licencie` int NOT NULL,
   FOREIGN KEY (`id_licencie`) REFERENCES licencies(`id`)
 );
+-- Fake data
+INSERT INTO `categories` (`nom`, `code`)
+VALUES ('Plus de 18 ans', 'P18'),
+  ('Moins de 12 ans', 'M12');

@@ -12,7 +12,7 @@ class EducateurModel extends LicencieModel
     {
         parent::__construct($id, $num_licence, $nom, $prenom, $id_categorie);
         $this->email = $email;
-        $this->password = $password;
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
         $this->is_admin = $is_admin;
         $this->id_licencie = $id_licencie;
     }
