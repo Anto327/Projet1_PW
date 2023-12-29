@@ -30,7 +30,7 @@ $educateurDAO = new EducateurDAO($connexion);
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
 } else {
-    $page = 'home'; // Page par défaut
+    $page = 'login'; // Page par défaut
 }
 
 if (isset($_GET['action'])) {
@@ -46,6 +46,7 @@ $controllers = [
     'contacts' => 'ContactController',
     'educateurs' => 'EducateurController',
     'licencies' => 'LicencieController',
+    'login' => 'LoginController'
 ];
 
 // Vérifier si le controleur demandé existe
@@ -56,8 +57,13 @@ if (array_key_exists($page, $controllers)) {
     echo "<a href='index.php?page=home'>Accueil</a><br>";
     echo "Vous appelez ce controller : $controllerName";
     // Instancier le controleur
-    $controller = new $controllerName($categorieDAO, $contactDAO, $licencieDAO, $educateurDAO);
-    // Exécuter la méthode par défaut du contréleur (par exemple, index() ou home())
+    if ($controllerName === 'LoginController') {
+        // Instancier le controleur LoginController avec EducateurDAO
+        $controller = new $controllerName($educateurDAO);
+    } else {
+        $controller = new $controllerName($categorieDAO, $contactDAO, $licencieDAO, $educateurDAO);
+    }
+    // Exécuter la méthode par défaut du controleur (par exemple, index() ou home())
     $controller->$action(isset($_GET['id']) ? $_GET['id'] : null); // Vous pouvez ajuster la méthode par défaut selon votre convention
     // c'est l'interet de action qui permet d'appeler une méthode particuliere d'un controller si il en possede plusieurs
     // ici isset($_GET['id'])?$_GET['id']:null est une ternaire(un if else condensé) pour passer la variable à la fonction si elle existe

@@ -37,13 +37,33 @@ class EducateurDAO
             $stmt->execute([$id]);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($row) return new EducateurModel($row['id'], $row['num_licence'], $row['nom'], $row['prenom'], $row['id_categorie'], $row['email'], $row['password'], $row['is_admin'], $row['id_licencie']);
+            if ($row)
+                return new EducateurModel($row['id'], $row['num_licence'], $row['nom'], $row['prenom'], $row['id_categorie'], $row['email'], $row['password'], $row['is_admin'], $row['id_licencie']);
             return null; // Aucun éducateur trouvé avec cet ID
         } catch (PDOException $e) {
             // Gestion des erreurs
             return null;
         }
     }
+    // Dans la classe EducateurDAO
+    public function getByEmail($email)
+    {
+        try {
+            $stmt = $this->connexion->pdo->prepare("SELECT educateurs.id, licencies.num_licence, licencies.nom, licencies.prenom, licencies.id_categorie, educateurs.email, educateurs.password, educateurs.is_admin, educateurs.id_licencie FROM educateurs JOIN licencies ON educateurs.id_licencie = licencies.id WHERE educateurs.email = ?");
+            $stmt->execute([$email]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if ($row) {
+                return new EducateurModel($row['id'], $row['num_licence'], $row['nom'], $row['prenom'], $row['id_categorie'], $row['email'], $row['password'], $row['is_admin'], $row['id_licencie']);
+            }
+
+            return null; // Aucun éducateur trouvé avec cet e-mail
+        } catch (PDOException $e) {
+            // Gestion des erreurs
+            return null;
+        }
+    }
+
 
     // Récupération de la liste des éducateurs
     public function getAll()
