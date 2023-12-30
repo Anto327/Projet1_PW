@@ -19,7 +19,6 @@ class HomeController extends Controller
     {
     }
 
-    // Méthodes pour effectuer des opérations
     public function create()
     {
     }

@@ -41,12 +41,12 @@ if (isset($_GET['action'])) {
 
 // Définition des controlleurs
 $controllers = [
+    'login' => 'LoginController',
     'home' => 'HomeController',
     'categories' => 'CategorieController',
     'contacts' => 'ContactController',
     'educateurs' => 'EducateurController',
-    'licencies' => 'LicencieController',
-    'login' => 'LoginController'
+    'licencies' => 'LicencieController'
 ];
 
 // Vérifier si le controleur demandé existe
@@ -57,12 +57,7 @@ if (array_key_exists($page, $controllers)) {
     echo "<a href='index.php?page=home'>Accueil</a><br>";
     echo "Vous appelez ce controller : $controllerName";
     // Instancier le controleur
-    if ($controllerName === 'LoginController') {
-        // Instancier le controleur LoginController avec EducateurDAO
-        $controller = new $controllerName($educateurDAO);
-    } else {
-        $controller = new $controllerName($categorieDAO, $contactDAO, $licencieDAO, $educateurDAO);
-    }
+    $controller = new $controllerName($categorieDAO, $contactDAO, $licencieDAO, $educateurDAO);
     // Exécuter la méthode par défaut du controleur (par exemple, index() ou home())
     $controller->$action(isset($_GET['id']) ? $_GET['id'] : null); // Vous pouvez ajuster la méthode par défaut selon votre convention
     // c'est l'interet de action qui permet d'appeler une méthode particuliere d'un controller si il en possede plusieurs

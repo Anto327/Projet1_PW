@@ -1,16 +1,3 @@
-<?php
-
-// Imports
-require_once "./config/Connexion.php";
-require_once "./classes/dao/ContactDAO.php";
-require_once "./classes/models/ContactModel.php";
-// Data
-$contactDAO = new ContactDAO(new Connexion());
-$contacts = $contactDAO->getAll();
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 
