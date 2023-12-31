@@ -1,14 +1,3 @@
-<?php
-require_once("./config/connexion.php");
-require_once("./classes/models/EducateurModel.php");
-require_once("./classes/dao/EducateurDAO.php");
-require_once("./controllers/LoginController.php");
-
-$educateurDAO = new EducateurDAO(new Connexion());
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,8 +13,10 @@ $educateurDAO = new EducateurDAO(new Connexion());
     <form action="index.php?page=login&action=login" method="POST">
         <label>Email</label>
         <input type="email" id="email" name="email" required><br>
+
         <label> Mot de passe</label>
         <input type="password" id="password" name="password" required>
+
         <button type="submit" name="login">Se connecter</button>
     </form>
 </body>
