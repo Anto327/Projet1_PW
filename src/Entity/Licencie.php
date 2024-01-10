@@ -22,6 +22,13 @@ class Licencie
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
+    #[ORM\ManyToOne(inversedBy: 'licencies')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
+    #[ORM\OneToOne(mappedBy: 'licencie', cascade: ['persist', 'remove'])]
+    private ?Contact $contact = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +66,35 @@ class Licencie
     public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getContact(): ?Contact
+    {
+        return $this->contact;
+    }
+
+    public function setContact(Contact $contact): static
+    {
+        // set the owning side of the relation if necessary
+        if ($contact->getLicencie() !== $this) {
+            $contact->setLicencie($this);
+        }
+
+        $this->contact = $contact;
 
         return $this;
     }

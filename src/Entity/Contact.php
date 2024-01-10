@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
@@ -24,6 +26,18 @@ class Contact
 
     #[ORM\Column(length: 255)]
     private ?string $telephone = null;
+
+    #[ORM\OneToOne(inversedBy: 'contact', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Licencie $licencie = null;
+
+    #[ORM\ManyToMany(targetEntity: MailContact::class, mappedBy: 'contacts')]
+    private Collection $mailContacts;
+
+    public function __construct()
+    {
+        $this->mailContacts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -74,6 +88,45 @@ class Contact
     public function setTelephone(string $telephone): static
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getLicencie(): ?Licencie
+    {
+        return $this->licencie;
+    }
+
+    public function setLicencie(Licencie $licencie): static
+    {
+        $this->licencie = $licencie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MailContact>
+     */
+    public function getMailContacts(): Collection
+    {
+        return $this->mailContacts;
+    }
+
+    public function addMailContact(MailContact $mailContact): static
+    {
+        if (!$this->mailContacts->contains($mailContact)) {
+            $this->mailContacts->add($mailContact);
+            $mailContact->addContact($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMailContact(MailContact $mailContact): static
+    {
+        if ($this->mailContacts->removeElement($mailContact)) {
+            $mailContact->removeContact($this);
+        }
 
         return $this;
     }
