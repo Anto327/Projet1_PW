@@ -38,8 +38,13 @@ php bin/console doctrine:migrations:diff
 php bin/console doctrine:migrations:migrate
 ```
 
-### 7.
+### 7. Créer un CRUD pour chaque entité
 
 ```
-php bin/console doctrine:migrations:migrate
+php bin/console make:crud Categorie
+php bin/console make:crud Licencie
+php bin/console make:crud Educateur
+php bin/console make:crud Contact
+php bin/console make:crud MailEtu
+php bin/console make:crud MailContact
 ```
