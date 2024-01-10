@@ -4,7 +4,6 @@ namespace App\Form;
 
 use App\Entity\Educateur;
 use App\Entity\Licencie;
-use App\Entity\MailEdu;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,18 +15,12 @@ class EducateurType extends AbstractType
     {
         $builder
             ->add('email')
+            // ->add('roles') // FIX ISSUE ON THIS FIELD
             ->add('password')
-            ->add('isAdmin')
             ->add('licencie', EntityType::class, [
                 'class' => Licencie::class,
-'choice_label' => 'id',
-            ])
-            ->add('mailEdus', EntityType::class, [
-                'class' => MailEdu::class,
-'choice_label' => 'id',
-'multiple' => true,
-            ])
-        ;
+                'choice_label' => 'id',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -10,8 +10,8 @@
             <tr>
                 <th>Id</th>
                 <th>Email</th>
+                <th>Roles</th>
                 <th>Password</th>
-                <th>IsAdmin</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -20,8 +20,8 @@
             <tr>
                 <td>{{ educateur.id }}</td>
                 <td>{{ educateur.email }}</td>
+                <td>{{ educateur.roles ? educateur.roles|json_encode : '' }}</td>
                 <td>{{ educateur.password }}</td>
-                <td>{{ educateur.isAdmin ? 'Yes' : 'No' }}</td>
                 <td>
                     <a href="{{ path('app_educateur_show', {'id': educateur.id}) }}">show</a>
                     <a href="{{ path('app_educateur_edit', {'id': educateur.id}) }}">edit</a>

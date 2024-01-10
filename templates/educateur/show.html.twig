@@ -16,12 +16,12 @@
                 <td>{{ educateur.email }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ educateur.password }}</td>
+                <th>Roles</th>
+                <td>{{ educateur.roles ? educateur.roles|json_encode : '' }}</td>
             </tr>
             <tr>
-                <th>IsAdmin</th>
-                <td>{{ educateur.isAdmin ? 'Yes' : 'No' }}</td>
+                <th>Password</th>
+                <td>{{ educateur.password }}</td>
             </tr>
         </tbody>
     </table>
