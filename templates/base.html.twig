@@ -1,8 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme">
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://bootstrapdemos.adminmart.com/modernize/dist/assets/css/styles.css" />
+        <link
+      rel="stylesheet"
+      href="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/owl.carousel/dist/assets/owl.carousel.min.css"
+    />
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {% block stylesheets %}
         {% endblock %}
@@ -11,7 +19,22 @@
 {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
+   
     <body>
+        {% include 'partials/nav.html.twig' %}
         {% block body %}{% endblock %}
+
+        <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/app.min.js"></script>
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/app.init.js"></script>
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/simplebar/dist/simplebar.min.js"></script>
+
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/sidebarmenu.js"></script>
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/theme.js"></script>
+
+    <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+    <script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/dashboards/dashboard.js"></script>
     </body>
 </html>
