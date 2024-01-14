@@ -81,12 +81,19 @@ class CategorieController extends Controller
 
             // Appeler la méthode du modèle (ContactDAO) pour mettre à jour le categorie
             if ($this->categorieDAO->update($categorie)) {
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "La catégorie a bien été modifiée !"
+                ];
                 // Rediriger vers la page de détails du categorie après la modification
                 header('Location:index.php?page=categories&action=edit&id=' . $id);
                 exit();
             } else {
                 // Gérer les erreurs de mise à jour du categorie
-                echo "Erreur lors de la modification de la catégorie.";
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de la modification de la catégorie."
+                ];
             }
         }
 
@@ -108,12 +115,19 @@ class CategorieController extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Supprimer le categorie en appelant la méthode du modèle (ContactDAO)
             if ($this->categorieDAO->deleteById($id)) {
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "La catégorie a bien été supprimée !"
+                ];
                 // Rediriger vers la page d'accueil après la suppression
                 header('Location:index.php?page=categories');
                 exit();
             } else {
                 // Gérer les erreurs de suppression du categorie
-                echo "Erreur lors de la suppression du categorie.";
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de la suppression de la catégorie."
+                ];
             }
         }
 

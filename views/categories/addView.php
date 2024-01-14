@@ -12,13 +12,13 @@
                     <form action="index.php?page=categories&action=create" method="post">
                         <div class="mb-3">
                             <label for="nom" class="form-label">Nom</label>
-                            <input type="text" class="form-control" id="nom" name="nom" aria-describedby="emailHelp">
+                            <input type="text" class="form-control" id="nom" name="nom" aria-describedby="emailHelp" required>
                         </div>
                         <div class="mb-3">
                             <label for="code" class="form-label">Code</label>
-                            <input type="text" class="form-control" id="code" name="code">
+                            <input type="text" class="form-control" id="code" name="code" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                        <button type="submit" class="btn btn-success">Ajouter</button>
                         <a href="index.php?page=categories" class="btn btn-dark">Revenir</a>
                     </form>
                 </div>
