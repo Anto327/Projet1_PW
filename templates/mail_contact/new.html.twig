@@ -5,7 +5,19 @@
 {% block body %}
     <h1>Create new MailContact</h1>
 
-    {{ include('mail_contact/_form.html.twig') }}
-
-    <a href="{{ path('app_mail_contact_index') }}">back to list</a>
+    <div class="col-lg-6">  
+             
+            <div class="card-body p-4">
+            {{ include('mail_contact/_form.html.twig', {'form': form}) }}
+           </div>
+    </div>
+    
+        <div class="mb-4">
+        <a href="{{ path('app_mail_contact_index') }}" class="btn btn-success">back to list</a>
+        
+        </div>
 {% endblock %}
+
+
+
+

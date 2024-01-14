@@ -1,4 +1,33 @@
-{{ form_start(form) }}
+{#{{ form_start(form) }}
     {{ form_widget(form) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+
+ #}
+
+ {# templates/educateur/_form.html.twig #}
+
+
+{{ form_start(form) }}
+
+ <div class="mb-4">
+    {{ form_label(form.email) }}
+    {{ form_widget(form.email, {'attr': {'class': 'mb-4', 'placeholder': 'Votre Email'}}) }}
+</div>
+
+<div class="mb-4">
+    {{ form_label(form.password) }}
+    {{ form_widget(form.password, {'attr': {'class': 'mb-4', 'placeholder': 'Votre Mot de Passe'}}) }}
+</div>
+
+<div class="mb-4" style="margin-bottom: 15px;">
+    {{ form_label(form.licencie) }}
+    {{ form_widget(form.licencie, {'attr': {'class': 'mb-4'}}) }}
+</div>
+
+
+    <button type="submit" class="btn btn-primary">Save</button>
+
+
+{{ form_end(form) }}
+
