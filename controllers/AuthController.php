@@ -26,8 +26,11 @@ class AuthController extends Controller
 
                 if ($loginResponse['status'] == AuthController::AUTH_SUCCESS) {
                     // Authentification réussie
+                    $educateur = $this->educateurDAO->getByEmail($email);
+
                     $_SESSION['valid'] = true;
                     $_SESSION['email'] = $email;
+                    $_SESSION['id_admin'] = $educateur->getId();
 
                     header('Location:index.php?page=home');
                     exit();
@@ -70,6 +73,7 @@ class AuthController extends Controller
     {
         unset($_SESSION["valid"]);
         unset($_SESSION["email"]);
+        unset($_SESSION["id_admin"]);
         header('Location:index.php?page=auth');
         exit();
     }

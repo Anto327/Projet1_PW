@@ -17,6 +17,7 @@ class LicencieController extends Controller
 
     public function show($id)
     {
+        $categories = $this->categorieDAO->getAll();
         $licencie = $this->licencieDAO->getById($id);
         include('./views/licencies/showView.php');
     }
@@ -41,12 +42,19 @@ class LicencieController extends Controller
 
             $licencie = new LicencieModel(0, $num_licence, $nom, $prenom, $id_categorie);
             if ($this->licencieDAO->create($licencie)) {
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "Le licencié a bien été ajouté !"
+                ];
                 // Rediriger vers la page d'accueil après l'ajout
                 header('Location:index?page=licencies');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de licencie
-                echo "\nErreur lors de l'ajout du licencie.";
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de l'ajout du licencié"
+                ];
             }
         }
 
@@ -82,12 +90,19 @@ class LicencieController extends Controller
 
             // Appeler la méthode du modèle (ContactDAO) pour mettre à jour le licencie
             if ($this->licencieDAO->update($licencie)) {
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "Le licencié a bien été modifié !"
+                ];
                 // Rediriger vers la page de détails du licencie après la modification
                 header('Location:index.php?page=licencies&action=edit&id=' . $id);
                 exit();
             } else {
                 // Gérer les erreurs de mise à jour du licencie
-                echo "Erreur lors de la modification du licencie.";
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de la modification du licencié."
+                ];
             }
         }
 
@@ -109,12 +124,19 @@ class LicencieController extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Supprimer le licencie en appelant la méthode du modèle (ContactDAO)
             if ($this->licencieDAO->deleteById($id)) {
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "Le licencié a bien été supprimé !"
+                ];
                 // Rediriger vers la page d'accueil après la suppression
                 header('Location:index.php?page=licencies');
                 exit();
             } else {
                 // Gérer les erreurs de suppression du licencie
-                echo "Erreur lors de la suppression du licencie.";
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de la suprresion du licencié."
+                ];
             }
         }
 

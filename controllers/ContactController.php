@@ -43,12 +43,19 @@ class ContactController extends Controller
 
             $contact = new ContactModel(0, $nom, $prenom, $email, $telephone, $id_licencie);
             if ($this->contactDAO->create($contact)) {
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "Le contact a bien été ajouté !"
+                ];
                 // Rediriger vers la page d'accueil après l'ajout
                 header('Location:index?page=contacts');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de contact
-                echo "\nErreur lors de l'ajout du contact.";
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de l'ajout du contact"
+                ];
             }
         }
 
@@ -84,12 +91,19 @@ class ContactController extends Controller
 
             // Appeler la méthode du modèle (ContactDAO) pour mettre à jour le contact
             if ($this->contactDAO->update($contact)) {
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "Le contact a bien été modifié !"
+                ];
                 // Rediriger vers la page de détails du contact après la modification
                 header('Location:index.php?page=contacts&action=edit&id=' . $id);
                 exit();
             } else {
                 // Gérer les erreurs de mise à jour du contact
-                echo "Erreur lors de la modification du contact.";
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de la modification du contact."
+                ];
             }
         }
 
@@ -111,12 +125,19 @@ class ContactController extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Supprimer le contact en appelant la méthode du modèle (ContactDAO)
             if ($this->contactDAO->deleteById($id)) {
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "Le contact a bien été supprimé !"
+                ];
                 // Rediriger vers la page d'accueil après la suppression
                 header('Location:index.php?page=contacts');
                 exit();
             } else {
                 // Gérer les erreurs de suppression du contact
-                echo "Erreur lors de la suppression du contact.";
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de la suprresion du contact."
+                ];
             }
         }
 

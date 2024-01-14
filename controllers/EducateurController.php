@@ -43,12 +43,19 @@ class EducateurController extends Controller
 
             $educateur = new EducateurModel(0, $num_licence, $nom, $prenom, $id_categorie, $email, $password, $is_admin, 0);
             if ($this->educateurDAO->create($educateur)) {
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "L'éducateur a bien été ajouté !"
+                ];
                 // Rediriger vers la page d'accueil après l'ajout
                 header('Location:index?page=educateurs');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de educateur
-                echo "\nErreur lors de l'ajout du educateur.";
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de l'ajout de l'éducateur"
+                ];
             }
         }
     }
@@ -74,7 +81,7 @@ class EducateurController extends Controller
 
             // Valider les données du formulaire (ajoutez des validations si nécessaire)
 
-            // Mettre à jour les détails du educateur
+            // Mettre à jour les détails de l'éducateur
             $educateur->setNumLicence($num_licence);
             $educateur->setNom($nom);
             $educateur->setPrenom($prenom);
@@ -87,12 +94,19 @@ class EducateurController extends Controller
             }
             // Appeler la méthode du modèle (ContactDAO) pour mettre à jour le educateur
             if ($this->educateurDAO->update($educateur)) {
-                // Rediriger vers la page de détails du educateur après la modification
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "L'éducateur a bien été modifié !"
+                ];
+                // Rediriger vers la page de détails de l'éducateur après la modification
                 header('Location:index.php?page=educateurs&action=edit&id=' . $id);
                 exit();
             } else {
-                // Gérer les erreurs de mise à jour du educateur
-                echo "Erreur lors de la modification du educateur.";
+                // Gérer les erreurs de mise à jour de l'éducateur
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de la modification de l'éducateur."
+                ];
             }
         }
     }
@@ -111,16 +125,23 @@ class EducateurController extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Supprimer le educateur en appelant la méthode du modèle (ContactDAO)
             if ($this->educateurDAO->deleteById($id)) {
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "L'éducateur a bien été supprimé !"
+                ];
                 // Rediriger vers la page d'accueil après la suppression
                 header('Location:index.php?page=educateurs');
                 exit();
             } else {
-                // Gérer les erreurs de suppression du educateur
-                echo "Erreur lors de la suppression de l'éducateur.";
+                // Gérer les erreurs de suppression de l'éducateur
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de la suprresion de l'éducateur."
+                ];
             }
         }
 
-        // Inclure la vue pour afficher la confirmation de suppression du educateur
+        // Inclure la vue pour afficher la confirmation de suppression de l'éducateur
         include('views/educateurs/deleteView.php');
     }
 }

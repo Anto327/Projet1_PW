@@ -5,7 +5,7 @@
             <a class="btn btn-primary m-1" href="index.php?page=licencies&action=add">Ajouter</a>
         </div>
         <div class="table-responsive">
-            <?php if (!empty($educateurs)) : ?>
+            <?php if (count($educateurs) > 1) : ?>
                 <table class="table text-nowrap mb-0 align-middle">
                     <thead class="text-dark fs-4">
                         <tr>
@@ -69,7 +69,7 @@
                     </tbody>
                 </table>
             <?php else : ?>
-                <p>Aucun licencié trouvé.</p>
+                <p>Aucun éducateur trouvé.</p>
             <?php endif; ?>
         </div>
     </div>

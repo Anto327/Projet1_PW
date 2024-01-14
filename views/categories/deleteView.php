@@ -17,7 +17,7 @@
                             <a href="index.php?page=categories" class="btn btn-dark">Non, revenir</a>
                         </form>
                     <?php else : ?>
-                        <p>Le catégorie n'a pas été trouvée.</p>
+                        <p>La catégorie n'a pas été trouvée.</p>
                     <?php endif; ?>
                 </div>
             </div>
