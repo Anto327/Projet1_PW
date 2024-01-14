@@ -1,7 +1,7 @@
 <div class="card w-100">
     <div class="card-body p-4">
         <div class="d-flex justify-content-between">
-            <h5 class="card-title fw-semibold mb-4">Consulter une catégorie</h5>
+            <h5 class="card-title fw-semibold mb-4">Détails de la catégorie</h5>
         </div>
         <!-- Flash message section -->
         <?php include './views/components/flashMsg.php'; ?>

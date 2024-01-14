@@ -45,7 +45,7 @@
                                     <h6 class="fw-semibold mb-1"><?= $contact->getTelephone(); ?></h6>
                                 </td>
                                 <td class="border-bottom-0 d-flex">
-                                    <a class="btn btn-primary m-1" href="index.php?page=contacts&action=show&id=<?= $contact->getId(); ?>">Voir</a>
+                                    <a class="btn btn-dark m-1" href="index.php?page=contacts&action=show&id=<?= $contact->getId(); ?>">Voir</a>
                                     <a class="btn btn-warning m-1" href="index.php?page=contacts&action=edit&id=<?= $contact->getId(); ?>">Modifier</a>
                                     <a class="btn btn-danger m-1" href="index.php?page=contacts&action=delete&id=<?= $contact->getId(); ?>">Supprimer</a>
                                 </td>

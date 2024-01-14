@@ -1,7 +1,7 @@
 <div class="card w-100">
     <div class="card-body p-4">
         <div class="d-flex justify-content-between">
-            <h5 class="card-title fw-semibold mb-4">Détails d'un éducateur</h5>
+            <h5 class="card-title fw-semibold mb-4">Détails de l'éducateur</h5>
         </div>
         <!-- Flash message section -->
         <?php include './views/components/flashMsg.php'; ?>
@@ -28,7 +28,9 @@
                                 <select class="form-control" id="id_categorie" name="id_categorie" disabled readonly>
                                     <option value="">-- Choisir une catégorie --</option>
                                     <?php foreach ($categories as $categorie) : ?>
-                                        <option value="<?= $categorie->getId() ?>" <?php if ($categorie->getId() == $educateur->getIdCategorie()) echo "selected" ?>><?= $categorie->getNom() ?></option>
+                                        <?php if ($categorie->getId() != 1) : ?>
+                                            <option value="<?= $categorie->getId() ?>" <?php if ($categorie->getId() == $educateur->getIdCategorie()) echo "selected" ?>><?= $categorie->getNom() ?></option>
+                                        <?php endif; ?>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -45,9 +47,11 @@
                                 </div>
                             </div>
 
-                            <a href="index.php?page=educateurs&action=edit&id=<?= $educateur->getId(); ?>" class="btn btn-warning">Modifier</a>
-                            <a href="index.php?page=educateurs&action=delete&id=<?= $educateur->getId(); ?>" class="btn btn-danger">Supprimer</a>
-                            <a href="index.php?page=educateurs" class="btn btn-dark">Revenir</a>
+                            <?php if ($educateur->getId() != 1) : ?>
+                                <a href="index.php?page=educateurs&action=edit&id=<?= $educateur->getId(); ?>" class="btn btn-warning">Modifier</a>
+                                <a href="index.php?page=educateurs&action=delete&id=<?= $educateur->getId(); ?>" class="btn btn-danger">Supprimer</a>
+                                <a href="index.php?page=educateurs" class="btn btn-dark">Revenir</a>
+                            <?php endif; ?>
                         </form>
                     <?php else : ?>
                         <p>Le educateur n'a pas été trouvé.</p>

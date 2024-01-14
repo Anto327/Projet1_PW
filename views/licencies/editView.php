@@ -26,13 +26,15 @@
                             <label for="id_categorie" class="form-label">Catégorie</label>
                             <select class="form-control" id="id_categorie" name="id_categorie">
                                 <?php foreach ($categories as $categorie) : ?>
-                                    <option value="<?= $categorie->getId() ?>" <?php if ($categorie->getId() == $licencie->getIdCategorie()) echo "selected"; ?>>
-                                        <?= $categorie->getNom() ?>
-                                    </option>
+                                    <?php if ($categorie->getId() != 1) : ?>
+                                        <option value="<?= $categorie->getId() ?>" <?php if ($categorie->getId() == $licencie->getIdCategorie()) echo "selected"; ?>>
+                                            <?= $categorie->getNom() ?>
+                                        </option>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-success">Ajouter</button>
+                        <button type="submit" class="btn btn-success">Modifier</button>
                         <a href="index.php?page=licencies" class="btn btn-dark">Revenir</a>
                     </form>
                 </div>

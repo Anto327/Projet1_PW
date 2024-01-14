@@ -46,7 +46,7 @@
                                         <h6 class="fw-semibold mb-1"><?= $licencie->getIdCategorie(); ?></h6>
                                     </td>
                                     <td class="border-bottom-0 d-flex">
-                                        <a class="btn btn-primary m-1" href="index.php?page=licencies&action=show&id=<?= $licencie->getId(); ?>">Voir</a>
+                                        <a class="btn btn-dark m-1" href="index.php?page=licencies&action=show&id=<?= $licencie->getId(); ?>">Voir</a>
                                         <a class="btn btn-warning m-1" href="index.php?page=licencies&action=edit&id=<?= $licencie->getId(); ?>">Modifier</a>
                                         <a class="btn btn-danger m-1" href="index.php?page=licencies&action=delete&id=<?= $licencie->getId(); ?>">Supprimer</a>
                                     </td>

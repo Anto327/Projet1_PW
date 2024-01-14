@@ -32,9 +32,11 @@
                                 <select class="form-control" id="id_licencie" name="id_licencie" required>
                                     <option value="">-- Choisir un licencié --</option>
                                     <?php foreach ($licencies as $licencie) : ?>
-                                        <option value="<?= $licencie->getId() ?>" onclick="fillNameInputs('<?= $licencie->getNom() ?>', '<?= $licencie->getPrenom() ?>');" <?php if ($licencie->getId() == $contact->getIdLicencie()) echo "selected"; ?>>
-                                            <?= $licencie->getNomComplet() ?>
-                                        </option>
+                                        <?php if ($licencie->getId() != 1) : ?>
+                                            <option value="<?= $licencie->getId() ?>" onclick="fillNameInputs('<?= $licencie->getNom() ?>', '<?= $licencie->getPrenom() ?>');" <?php if ($licencie->getId() == $contact->getIdLicencie()) echo "selected"; ?>>
+                                                <?= $licencie->getNomComplet() ?>
+                                            </option>
+                                        <?php endif; ?>
                                     <?php endforeach; ?>
                                 </select>
                             </div>

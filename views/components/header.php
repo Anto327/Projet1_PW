@@ -19,7 +19,7 @@
                                 <i class="ti ti-user fs-6"></i>
                                 <p class="mb-0 fs-3">Mon profil</p>
                             </a>
-                            <a href="index.php?page=auth&action=logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Déconexion</a>
+                            <a href="index.php?page=auth&action=logout" class="btn btn-outline-primary mx-3 mt-2 d-block">Déconnexion</a>
                         </div>
                     </div>
                 </li>

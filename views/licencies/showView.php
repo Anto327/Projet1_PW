@@ -1,7 +1,7 @@
 <div class="card w-100">
     <div class="card-body p-4">
         <div class="d-flex justify-content-between">
-            <h5 class="card-title fw-semibold mb-4">Consulter un licencié</h5>
+            <h5 class="card-title fw-semibold mb-4">Détails du licencié</h5>
         </div>
         <!-- Flash message section -->
         <?php include './views/components/flashMsg.php'; ?>
@@ -26,14 +26,19 @@
                             <label for="id_categorie" class="form-label">Catégorie</label>
                             <select class="form-control" id="id_categorie" name="id_categorie" disabled readonly>
                                 <?php foreach ($categories as $categorie) : ?>
-                                    <option value="<?= $categorie->getId() ?>" <?php if ($categorie->getId() == $licencie->getIdCategorie()) echo "selected"; ?>>
-                                        <?= $categorie->getNom() ?>
-                                    </option>
+                                    <?php if ($categorie->getId() != 1) : ?>
+                                        <option value="<?= $categorie->getId() ?>" <?php if ($categorie->getId() == $licencie->getIdCategorie()) echo "selected"; ?>>
+                                            <?= $categorie->getNom() ?>
+                                        </option>
+                                    <?php endif; ?>
                                 <?php endforeach; ?>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-success">Ajouter</button>
-                        <a href="index.php?page=licencies" class="btn btn-dark">Revenir</a>
+                        <?php if ($licencie->getId() != 1) : ?>
+                            <a href="index.php?page=licencies&action=edit&id=<?= $licencie->getId(); ?>" class="btn btn-warning">Modifier</a>
+                            <a href="index.php?page=licencies&action=delete&id=<?= $licencie->getId(); ?>" class="btn btn-danger">Supprimer</a>
+                            <a href="index.php?page=licencies" class="btn btn-dark">Revenir</a>
+                        <?php endif; ?>
                     </form>
                 </div>
             </div>

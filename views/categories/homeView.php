@@ -34,7 +34,7 @@
                                         <h6 class="fw-semibold mb-1"><?= $categorie->getCode(); ?></h6>
                                     </td>
                                     <td class="border-bottom-0 d-flex">
-                                        <a class="btn btn-primary m-1" href="index.php?page=categories&action=show&id=<?= $categorie->getId(); ?>">Voir</a>
+                                        <a class="btn btn-dark m-1" href="index.php?page=categories&action=show&id=<?= $categorie->getId(); ?>">Voir</a>
                                         <a class="btn btn-warning m-1" href="index.php?page=categories&action=edit&id=<?= $categorie->getId(); ?>">Modifier</a>
                                         <a class="btn btn-danger m-1" href="index.php?page=categories&action=delete&id=<?= $categorie->getId(); ?>">Supprimer</a>
                                     </td>
@@ -44,7 +44,7 @@
                     </tbody>
                 </table>
             <?php else : ?>
-                <p>Aucun categorie trouvé.</p>
+                <p>Aucune categorie trouvée.</p>
             <?php endif; ?>
         </div>
     </div>

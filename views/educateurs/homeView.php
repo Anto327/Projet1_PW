@@ -64,7 +64,7 @@
                                         </h6>
                                     </td>
                                     <td class="border-bottom-0 d-flex">
-                                        <a class="btn btn-primary m-1" href="index.php?page=educateurs&action=show&id=<?= $educateur->getId(); ?>">Voir</a>
+                                        <a class="btn btn-dark m-1" href="index.php?page=educateurs&action=show&id=<?= $educateur->getId(); ?>">Voir</a>
                                         <a class="btn btn-warning m-1" href="index.php?page=educateurs&action=edit&id=<?= $educateur->getId(); ?>">Modifier</a>
                                         <a class="btn btn-danger m-1" href="index.php?page=educateurs&action=delete&id=<?= $educateur->getId(); ?>">Supprimer</a>
                                     </td>

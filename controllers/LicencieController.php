@@ -135,7 +135,7 @@ class LicencieController extends Controller
                 // Gérer les erreurs de suppression du licencie
                 $_SESSION['flashMsg'] = [
                     'status' => 'danger',
-                    'msg' => "Erreur lors de la suprresion du licencié."
+                    'msg' => "Erreur lors de la suppression du licencié."
                 ];
             }
         }

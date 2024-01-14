@@ -137,7 +137,7 @@ class EducateurController extends Controller
                 // Gérer les erreurs de suppression de l'éducateur
                 $_SESSION['flashMsg'] = [
                     'status' => 'danger',
-                    'msg' => "Erreur lors de la suprresion de l'éducateur."
+                    'msg' => "Erreur lors de la suppression de l'éducateur."
                 ];
             }
         }

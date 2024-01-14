@@ -14,7 +14,7 @@ CREATE TABLE `licencies` (
   `prenom` varchar(255) NOT NULL,
   `id_categorie` int NOT NULL,
   UNIQUE (`num_licence`),
-  FOREIGN KEY (`id_categorie`) REFERENCES categories(`id`)
+  FOREIGN KEY (`id_categorie`) REFERENCES categories(`id`) ON UPDATE CASCADE ON DELETE CASCADE
 );
 CREATE TABLE `educateurs` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -22,7 +22,7 @@ CREATE TABLE `educateurs` (
   `password` varchar(255) NOT NULL,
   `is_admin` BOOLEAN NOT NULL,
   `id_licencie` int NOT NULL,
-  FOREIGN KEY (`id_licencie`) REFERENCES licencies(`id`)
+  FOREIGN KEY (`id_licencie`) REFERENCES licencies(`id`) ON UPDATE CASCADE ON DELETE CASCADE
 );
 CREATE TABLE `contacts` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -31,7 +31,7 @@ CREATE TABLE `contacts` (
   `email` varchar(255) NOT NULL,
   `telephone` varchar(255) NOT NULL,
   `id_licencie` int NOT NULL,
-  FOREIGN KEY (`id_licencie`) REFERENCES licencies(`id`)
+  FOREIGN KEY (`id_licencie`) REFERENCES licencies(`id`) ON UPDATE CASCADE ON DELETE CASCADE
 );
 -- Base admin data
 INSERT INTO `categories` (`nom`, `code`)

@@ -137,7 +137,7 @@ class ContactController extends Controller
                 // Gérer les erreurs de suppression du contact
                 $_SESSION['flashMsg'] = [
                     'status' => 'danger',
-                    'msg' => "Erreur lors de la suprresion du contact."
+                    'msg' => "Erreur lors de la suppression du contact."
                 ];
             }
         }

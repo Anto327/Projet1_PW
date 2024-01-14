@@ -28,7 +28,9 @@
                                 <select class="form-control" id="id_categorie" name="id_categorie" required>
                                     <option value="">-- Choisir une catégorie --</option>
                                     <?php foreach ($categories as $categorie) : ?>
-                                        <option value="<?= $categorie->getId() ?>" <?php if ($categorie->getId() == $educateur->getIdCategorie()) echo "selected" ?>><?= $categorie->getNom() ?></option>
+                                        <?php if ($categorie->getId() != 1) : ?>
+                                            <option value="<?= $categorie->getId() ?>" <?php if ($categorie->getId() == $educateur->getIdCategorie()) echo "selected" ?>><?= $categorie->getNom() ?></option>
+                                        <?php endif; ?>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
