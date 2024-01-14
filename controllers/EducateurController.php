@@ -16,6 +16,7 @@ class EducateurController extends Controller
 
     public function show($id)
     {
+        $categories = $this->categorieDAO->getAll();
         $educateur = $this->educateurDAO->getById($id);
         include('./views/educateurs/showView.php');
     }
@@ -36,8 +37,8 @@ class EducateurController extends Controller
             $prenom = $_POST['prenom'];
             $id_categorie = $_POST['id_categorie'];
             $email = $_POST['email'];
-            $password = $_POST['password'];
-            $is_admin = $_POST['is_admin'] == 'on' ? 1 : 0;
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $is_admin = isset($_POST['is_admin']) ? 1 : 0;
 
             // Valider les données du formulaire (ajoutez des validations si nécessaire)
 
@@ -54,7 +55,7 @@ class EducateurController extends Controller
                 // Gérer les erreurs d'ajout de educateur
                 $_SESSION['flashMsg'] = [
                     'status' => 'danger',
-                    'msg' => "Erreur lors de l'ajout de l'éducateur"
+                    'msg' => "Erreur lors de l'ajout de l'éducateur."
                 ];
             }
         }

@@ -18,6 +18,7 @@ class ContactController extends Controller
 
     public function show($id)
     {
+        $licencies =  $this->licencieDAO->getAll();
         $contact = $this->contactDAO->getById($id);
         include('./views/contacts/showView.php');
     }

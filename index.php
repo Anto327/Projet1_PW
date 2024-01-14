@@ -122,6 +122,15 @@ if (array_key_exists($page, $controllers)) {
     <script src="./assets/libs/apexcharts/dist/apexcharts.min.js"></script>
     <script src="./assets/libs/simplebar/dist/simplebar.js"></script>
     <script src="./assets/js/dashboard.js"></script>
+    <script>
+        function fillNameInputs(nom, prenom) {
+            console.log(nom);
+            const lastname = document.getElementById("nom");
+            const firstname = document.getElementById("prenom");
+            lastname.value = nom;
+            firstname.value = prenom;
+        }
+    </script>
 </body>
 
 </html>

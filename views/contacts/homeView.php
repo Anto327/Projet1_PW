@@ -2,8 +2,11 @@
     <div class="card-body p-4">
         <div class="d-flex justify-content-between">
             <h5 class="card-title fw-semibold mb-4">Contacts</h5>
-            <a class="btn btn-primary m-1" href="index.php?page=licencies&action=add">Ajouter</a>
+            <a class="btn btn-primary m-1" href="index.php?page=contacts&action=add">Ajouter</a>
         </div>
+        <!-- Flash message section -->
+        <?php include './views/components/flashMsg.php'; ?>
+        <!-- Records -->
         <div class="table-responsive">
             <?php if (!empty($contacts)) : ?>
                 <table class="table text-nowrap mb-0 align-middle">

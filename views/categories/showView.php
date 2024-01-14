@@ -21,6 +21,7 @@
                             </div>
                             <a href="index.php?page=categories&action=edit&id=<?= $categorie->getId(); ?>" class="btn btn-warning">Modifier</a>
                             <a href="index.php?page=categories&action=delete&id=<?= $categorie->getId(); ?>" class="btn btn-danger">Supprimer</a>
+                            <a href="index.php?page=categories" class="btn btn-dark">Revenir</a>
                         </form>
                     <?php else : ?>
                         <p>Le categorie n'a pas été trouvée.</p>
