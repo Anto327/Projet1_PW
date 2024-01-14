@@ -1,50 +1,76 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des Educateurs</title>
-    <link rel="stylesheet" href="/assets/styles.css">
-</head>
-
-<body>
-    <h1>Liste des Educateurs</h1>
-    <a href="index.php?page=educateurs&action=add">Ajouter un éducateur</a>
-
-    <?php if (!empty($educateurs)) : ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>No licence</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Catégorie</th>
-                    <th>Email</th>
-                    <th>Accès admin</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($educateurs as $educateur) : ?>
-                    <tr>
-                        <td><?= $educateur->getNumLicence() ?></td>
-                        <td><?= $educateur->getNom() ?></td>
-                        <td><?= $educateur->getPrenom() ?></td>
-                        <td><?= $educateur->getIdCategorie() ?></td>
-                        <td><?= $educateur->getEmail() ?></td>
-                        <td><?= $educateur->isAdmin() ? "Oui" : "Non" ?></td>
-                        <td>
-                            <a href="index.php?page=educateurs&action=show&id=<?= $educateur->getId(); ?>">Voir</a>
-                            <a href="index.php?page=educateurs&action=edit&id=<?= $educateur->getId(); ?>">Modifier</a>
-                            <a href="index.php?page=educateurs&action=delete&id=<?= $educateur->getId(); ?>">Supprimer</a>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    <?php else : ?>
-        <p>Aucun éducateur trouvé.</p>
-    <?php endif; ?>
-</body>
-
-</html>
+<div class="card w-100">
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title fw-semibold mb-4">Educateurs</h5>
+            <a class="btn btn-primary m-1" href="index.php?page=licencies&action=add">Ajouter</a>
+        </div>
+        <div class="table-responsive">
+            <?php if (!empty($educateurs)) : ?>
+                <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                        <tr>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">No licence</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Nom</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Prenom</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Catégorie</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Email</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Accès admin</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Actions</h6>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($educateurs as $educateur) : ?>
+                            <tr>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0"><?= $educateur->getNumLicence() ?></h6>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0"><?= $educateur->getNom() ?></h6>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-1"><?= $educateur->getPrenom() ?></h6>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-1"><?= $educateur->getIdCategorie() ?></h6>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-1"><?= $educateur->getEmail() ?></h6>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-1">
+                                        <?php if ($educateur->isAdmin()) : ?>
+                                            <span class="badge bg-success rounded-3 fw-semibold">Oui</span>
+                                        <?php else : ?>
+                                            <span class="badge bg-danger rounded-3 fw-semibold">Non</span>
+                                        <?php endif; ?>
+                                    </h6>
+                                </td>
+                                <td class="border-bottom-0 d-flex">
+                                    <a class="btn btn-primary m-1" href="index.php?page=educateurs&action=show&id=<?= $educateur->getId(); ?>">Voir</a>
+                                    <a class="btn btn-warning m-1" href="index.php?page=educateurs&action=edit&id=<?= $educateur->getId(); ?>">Modifier</a>
+                                    <a class="btn btn-danger m-1" href="index.php?page=educateurs&action=delete&id=<?= $educateur->getId(); ?>">Supprimer</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else : ?>
+                <p>Aucun licencié trouvé.</p>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

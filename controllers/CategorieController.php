@@ -37,12 +37,19 @@ class CategorieController extends Controller
 
             $categorie = new CategorieModel(0, $nom, $code);
             if ($this->categorieDAO->create($categorie)) {
+                $_SESSION['flashMsg'] = [
+                    'status' => 'success',
+                    'msg' => "La catégorie a bien été ajoutée !"
+                ];
                 // Rediriger vers la page d'accueil après l'ajout
-                header('Location:index?page=categories');
+                header('Location:index.php?page=categories');
                 exit();
             } else {
                 // Gérer les erreurs d'ajout de categorie
-                echo "\nErreur lors de l'ajout de la catégorie.";
+                $_SESSION['flashMsg'] = [
+                    'status' => 'danger',
+                    'msg' => "Erreur lors de l'ajout de la catégorie."
+                ];
             }
         }
 

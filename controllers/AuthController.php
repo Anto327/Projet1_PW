@@ -11,6 +11,7 @@ class AuthController extends Controller
     public function index()
     {
         include('./views/login.php');
+        exit();
     }
 
     public function login()
@@ -27,10 +28,14 @@ class AuthController extends Controller
                     // Authentification réussie
                     $_SESSION['valid'] = true;
                     $_SESSION['email'] = $email;
+
                     header('Location:index.php?page=home');
                     exit();
                 } else {
-                    echo "\n" . $loginResponse['message'];
+                    $_SESSION['flashMsg'] = [
+                        'status' => 'danger',
+                        'msg' => $loginResponse['message']
+                    ];
                 }
             }
         }
@@ -65,7 +70,7 @@ class AuthController extends Controller
     {
         unset($_SESSION["valid"]);
         unset($_SESSION["email"]);
-        header('Location:index.php?page=home');
+        header('Location:index.php?page=auth');
         exit();
     }
 

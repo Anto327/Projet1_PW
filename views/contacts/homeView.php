@@ -1,6 +1,9 @@
 <div class="card w-100">
     <div class="card-body p-4">
-        <h5 class="card-title fw-semibold mb-4">Contacts</h5>
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title fw-semibold mb-4">Contacts</h5>
+            <a class="btn btn-primary m-1" href="index.php?page=licencies&action=add">Ajouter</a>
+        </div>
         <div class="table-responsive">
             <?php if (!empty($contacts)) : ?>
                 <table class="table text-nowrap mb-0 align-middle">
@@ -38,10 +41,10 @@
                                 <td class="border-bottom-0">
                                     <h6 class="fw-semibold mb-1"><?= $contact->getTelephone(); ?></h6>
                                 </td>
-                                <td class="border-bottom-0">
-                                    <a href="index.php?page=contacts&action=show&id=<?= $contact->getId(); ?>">Voir</a>
-                                    <a href="index.php?page=contacts&action=edit&id=<?= $contact->getId(); ?>">Modifier</a>
-                                    <a href="index.php?page=contacts&action=delete&id=<?= $contact->getId(); ?>">Supprimer</a>
+                                <td class="border-bottom-0 d-flex">
+                                    <a class="btn btn-primary m-1" href="index.php?page=contacts&action=show&id=<?= $contact->getId(); ?>">Voir</a>
+                                    <a class="btn btn-warning m-1" href="index.php?page=contacts&action=edit&id=<?= $contact->getId(); ?>">Modifier</a>
+                                    <a class="btn btn-danger m-1" href="index.php?page=contacts&action=delete&id=<?= $contact->getId(); ?>">Supprimer</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

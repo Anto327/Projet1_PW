@@ -19,7 +19,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="index.php?page=home" aria-expanded="false">
                         <span>
-                            <i class="ti ti-layout-dashboard"></i>
+                            <i class="ti ti-home"></i>
                         </span>
                         <span class="hide-menu">Accueil</span>
                     </a>
@@ -39,7 +39,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="index.php?page=licencies" aria-expanded="false">
                         <span>
-                            <i class="ti ti-alert-circle"></i>
+                            <i class="ti ti-users"></i>
                         </span>
                         <span class="hide-menu">Licenciés</span>
                     </a>
@@ -47,7 +47,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="index.php?page=contacts" aria-expanded="false">
                         <span>
-                            <i class="ti ti-cards"></i>
+                            <i class="ti ti-file-phone"></i>
                         </span>
                         <span class="hide-menu">Contacts</span>
                     </a>
@@ -55,7 +55,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="index.php?page=educateurs" aria-expanded="false">
                         <span>
-                            <i class="ti ti-file-description"></i>
+                            <i class="ti ti-users"></i>
                         </span>
                         <span class="hide-menu">Educateurs</span>
                     </a>

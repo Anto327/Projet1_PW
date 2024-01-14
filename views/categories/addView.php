@@ -1,25 +1,28 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Ajouter une Catégorie</title>
-    <link rel="stylesheet" href="/assets/styles.css">
-</head>
-
-<body>
-    <h1>Ajouter une Catégorie</h1>
-    <a href="index.php?page=categories">Retour à la liste des catégories</a>
-
-    <form action="index.php?page=categories&action=create" method="post">
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" required><br>
-
-        <label for="code">Code :</label>
-        <input type="text" id="code" name="code" required><br>
-
-        <button type="submit">Ajouter</button>
-    </form>
-</body>
-
-</html>
+<div class="card w-100">
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title fw-semibold mb-4">Ajouter une catégorie</h5>
+        </div>
+        <!-- Flash message section -->
+        <?php include './views/components/flashMsg.php'; ?>
+        <!-- Form -->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="index.php?page=categories&action=create" method="post">
+                        <div class="mb-3">
+                            <label for="nom" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="nom" name="nom" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="code" class="form-label">Code</label>
+                            <input type="text" class="form-control" id="code" name="code">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                        <a href="index.php?page=categories" class="btn btn-dark">Revenir</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
