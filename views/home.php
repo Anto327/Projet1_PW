@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-md-3">
             <div class="card">
-                <img src="../assets/images/products/s4.jpg" class="card-img-top" alt="...">
+                <img src="./assets/images/backgrounds/categories.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Catégories</h5>
                     <p class="card-text">
@@ -16,7 +16,7 @@
 
         <div class="col-md-3">
             <div class="card">
-                <img src="../assets/images/products/s4.jpg" class="card-img-top" alt="...">
+                <img src="./assets/images/backgrounds/licencies.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Licenciés</h5>
                     <p class="card-text">
@@ -29,7 +29,7 @@
 
         <div class="col-md-3">
             <div class="card">
-                <img src="../assets/images/products/s4.jpg" class="card-img-top" alt="...">
+                <img src="./assets/images/backgrounds/contacts.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Contacts</h5>
                     <p class="card-text">
@@ -42,7 +42,7 @@
 
         <div class="col-md-3">
             <div class="card">
-                <img src="../assets/images/products/s4.jpg" class="card-img-top" alt="...">
+                <img src="./assets/images/backgrounds/educateurs.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Educateurs</h5>
                     <p class="card-text">

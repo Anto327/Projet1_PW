@@ -84,6 +84,7 @@ if (array_key_exists($page, $controllers)) {
     <title>Club Sportif</title>
     <link rel="shortcut icon" type="image/png" href="./assets/images/logos/favicon.png" />
     <link rel="stylesheet" href="./assets/css/styles.min.css" />
+    <link rel="stylesheet" href="./assets/styles.css" />
 </head>
 
 <body>
