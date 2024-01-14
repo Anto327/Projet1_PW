@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Détails de l'Educateur</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
 
 <body>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Supprimer un Contact</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
 
 <body>

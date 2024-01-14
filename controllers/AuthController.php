@@ -1,6 +1,6 @@
 <?php
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     // Authentication constants
     private const AUTH_SUCCESS = 1;
@@ -16,15 +16,17 @@ class LoginController extends Controller
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            if (isset($_POST['login']) && isset($_POST['email']) && isset($_POST['password'])) {
+            if (isset($_POST['email']) && isset($_POST['password'])) {
 
                 $email = $_POST['email'];
                 $password = $_POST['password'];
 
                 $loginResponse = $this->verifyLogin($email, $password);
 
-                if ($loginResponse['status'] == LoginController::AUTH_SUCCESS) {
+                if ($loginResponse['status'] == AuthController::AUTH_SUCCESS) {
                     // Authentification réussie
+                    $_SESSION['valid'] = true;
+                    $_SESSION['email'] = $email;
                     header('Location:index.php?page=home');
                     exit();
                 } else {
@@ -40,23 +42,31 @@ class LoginController extends Controller
     {
         $educateur = $this->educateurDAO->getByEmail($email);
         $response = [
-            'status' => LoginController::AUTH_SUCCESS,
+            'status' => AuthController::AUTH_SUCCESS,
             'message' => 'Authentication success !'
         ];
 
         // Vérifiez si l'éducateur existe, si le mot de passe est correct et s'il est administrateur
         if (!$educateur) {
-            $response['status'] = LoginController::USER_NOT_FOUND;
+            $response['status'] = AuthController::USER_NOT_FOUND;
             $response['message'] = "Authentication failed: User not found.";
         } else if (!password_verify($password, $educateur->getPassword())) {
-            $response['status'] = LoginController::WRONG_PASSWORD;
+            $response['status'] = AuthController::WRONG_PASSWORD;
             $response['message'] = "Authentication failed: Incorrect password.";
         } else if (!$educateur->isAdmin()) {
-            $response['status'] = LoginController::NOT_ADMIN;
+            $response['status'] = AuthController::NOT_ADMIN;
             $response['message'] = "Authentication failed: User is not an administrator.";
         }
 
         return $response;
+    }
+
+    public function logout()
+    {
+        unset($_SESSION["valid"]);
+        unset($_SESSION["email"]);
+        header('Location:index.php?page=home');
+        exit();
     }
 
     public function add()

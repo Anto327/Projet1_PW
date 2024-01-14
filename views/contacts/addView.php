@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajouter un Contact</title>
-    <link rel="stylesheet" href="../../assets/styles.css">
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
         <button type="submit">Ajouter</button>
     </form>
     <!-- Javascript -->
-    <script src="../../assets/script.js"></script>
+    <script src="/assets/script.js"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajouter une Catégorie</title>
-    <link rel="stylesheet" href="../../assets/styles.css">
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
 
 <body>

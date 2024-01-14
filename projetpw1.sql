@@ -1,7 +1,11 @@
+DROP TABLE IF EXISTS `contacts`;
+DROP TABLE IF EXISTS `educateurs`;
+DROP TABLE IF EXISTS `licencies`;
+DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   `nom` varchar(100) NOT NULL,
-  `code` varchar(5) NOT NULL
+  `code` varchar(10) NOT NULL
 );
 CREATE TABLE `licencies` (
   `id` int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -29,7 +33,16 @@ CREATE TABLE `contacts` (
   `id_licencie` int NOT NULL,
   FOREIGN KEY (`id_licencie`) REFERENCES licencies(`id`)
 );
--- Fake data
+-- Base admin data
 INSERT INTO `categories` (`nom`, `code`)
-VALUES ('Plus de 18 ans', 'P18'),
-  ('Moins de 12 ans', 'M12');
+VALUES ('Administrateurs', 'ADMINS');
+INSERT INTO `licencies` (`num_licence`, `nom`, `prenom`, `id_categorie`)
+VALUES (0, 'admin', 'admin', 1);
+INSERT INTO `educateurs` (`email`, `password`, `is_admin`, `id_licencie`)
+VALUES (
+    'admin@admin.com',
+    '$2y$10$mt8Murv9KojRdUrouDrGAuxuH2uhdJQ9LLykBrsbAY67YYg2JKbTi',
+    -- password = admin
+    1,
+    1
+  );

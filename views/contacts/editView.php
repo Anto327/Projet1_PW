@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Modifier un Contact</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
         <p>Le contact n'a pas été trouvé.</p>
     <?php endif; ?>
     <!-- Javascript -->
-    <script src="../../assets/script.js"></script>
+    <script src="/assets/script.js"></script>
 </body>
 
 </html>

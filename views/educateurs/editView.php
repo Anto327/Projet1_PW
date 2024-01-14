@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Modifier un licencié</title>
-    <link rel="stylesheet" href="../assets/styles.css">
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
 
 <body>
