@@ -20,13 +20,8 @@ class LicencieType extends AbstractType
             ->add('prenom')
             ->add('categorie', EntityType::class, [
                 'class' => Categorie::class,
-'choice_label' => 'id',
-            ])
-            ->add('contact', EntityType::class, [
-                'class' => Contact::class,
-'choice_label' => 'id',
-            ])
-        ;
+                'choice_label' => 'nom',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

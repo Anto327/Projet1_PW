@@ -41,7 +41,6 @@
                                     <td class="border-bottom-0 d-flex">
                                         <a class="btn btn-dark m-1" href="{{ path('app_categorie_show', {'id': categorie.id}) }}">Voir</a>
                                         <a class="btn btn-warning m-1" href="{{ path('app_categorie_edit', {'id': categorie.id}) }}">Modifier</a>
-                                        <button class="btn btn-danger m-1" form="app_categorie_delete_{{ categorie.id }}" type="submit">Supprimer</button>
                                         {{ include('categorie/_delete_form.html.twig', {'id': categorie.id}) }}
                                     </td>
                                 </tr>

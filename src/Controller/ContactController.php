@@ -45,8 +45,13 @@ class ContactController extends AbstractController
     #[Route('/{id}', name: 'app_contact_show', methods: ['GET'])]
     public function show(Contact $contact): Response
     {
+        $form = $this->createForm(ContactType::class, $contact, [
+            'disabled' => true,
+        ]);
+
         return $this->render('contact/show.html.twig', [
             'contact' => $contact,
+            'form' => $form,
         ]);
     }
 
@@ -71,7 +76,7 @@ class ContactController extends AbstractController
     #[Route('/{id}', name: 'app_contact_delete', methods: ['POST'])]
     public function delete(Request $request, Contact $contact, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$contact->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $contact->getId(), $request->request->get('_token'))) {
             $entityManager->remove($contact);
             $entityManager->flush();
         }

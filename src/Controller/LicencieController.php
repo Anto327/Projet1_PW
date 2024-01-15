@@ -45,8 +45,13 @@ class LicencieController extends AbstractController
     #[Route('/{id}', name: 'app_licencie_show', methods: ['GET'])]
     public function show(Licencie $licencie): Response
     {
+        $form = $this->createForm(LicencieType::class, $licencie, [
+            'disabled' => true,
+        ]);
+
         return $this->render('licencie/show.html.twig', [
             'licencie' => $licencie,
+            'form' => $form,
         ]);
     }
 
@@ -71,7 +76,7 @@ class LicencieController extends AbstractController
     #[Route('/{id}', name: 'app_licencie_delete', methods: ['POST'])]
     public function delete(Request $request, Licencie $licencie, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$licencie->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $licencie->getId(), $request->request->get('_token'))) {
             $entityManager->remove($licencie);
             $entityManager->flush();
         }

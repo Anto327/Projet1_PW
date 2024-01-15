@@ -1,7 +1,7 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
     {% if disable_btn is not defined %}
-    <button class="btn  btn-success">{{ button_label|default('Ajouter') }}</button>
+        <button class="btn  btn-success">{{ button_label|default('Ajouter') }}</button>
     {% endif %}
     <a href="{{  path('app_categorie_index') }}" class="btn btn-dark">Revenir</a>
 {{ form_end(form) }}

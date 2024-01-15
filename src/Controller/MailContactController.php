@@ -45,8 +45,13 @@ class MailContactController extends AbstractController
     #[Route('/{id}', name: 'app_mail_contact_show', methods: ['GET'])]
     public function show(MailContact $mailContact): Response
     {
+        $form = $this->createForm(MailContactType::class, $mailContact, [
+            'disabled' => true,
+        ]);
+
         return $this->render('mail_contact/show.html.twig', [
             'mail_contact' => $mailContact,
+            'form' => $form,
         ]);
     }
 
@@ -71,7 +76,7 @@ class MailContactController extends AbstractController
     #[Route('/{id}', name: 'app_mail_contact_delete', methods: ['POST'])]
     public function delete(Request $request, MailContact $mailContact, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$mailContact->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $mailContact->getId(), $request->request->get('_token'))) {
             $entityManager->remove($mailContact);
             $entityManager->flush();
         }

@@ -45,8 +45,13 @@ class MailEduController extends AbstractController
     #[Route('/{id}', name: 'app_mail_edu_show', methods: ['GET'])]
     public function show(MailEdu $mailEdu): Response
     {
+        $form = $this->createForm(MailEduType::class, $mailEdu, [
+            'disabled' => true,
+        ]);
+
         return $this->render('mail_edu/show.html.twig', [
             'mail_edu' => $mailEdu,
+            'form' => $form,
         ]);
     }
 
@@ -71,7 +76,7 @@ class MailEduController extends AbstractController
     #[Route('/{id}', name: 'app_mail_edu_delete', methods: ['POST'])]
     public function delete(Request $request, MailEdu $mailEdu, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$mailEdu->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $mailEdu->getId(), $request->request->get('_token'))) {
             $entityManager->remove($mailEdu);
             $entityManager->flush();
         }

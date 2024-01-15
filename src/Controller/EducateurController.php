@@ -45,8 +45,13 @@ class EducateurController extends AbstractController
     #[Route('/{id}', name: 'app_educateur_show', methods: ['GET'])]
     public function show(Educateur $educateur): Response
     {
+        $form = $this->createForm(EducateurType::class, $educateur, [
+            'disabled' => true,
+        ]);
+
         return $this->render('educateur/show.html.twig', [
             'educateur' => $educateur,
+            'form' => $form,
         ]);
     }
 
@@ -71,7 +76,7 @@ class EducateurController extends AbstractController
     #[Route('/{id}', name: 'app_educateur_delete', methods: ['POST'])]
     public function delete(Request $request, Educateur $educateur, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$educateur->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $educateur->getId(), $request->request->get('_token'))) {
             $entityManager->remove($educateur);
             $entityManager->flush();
         }
