@@ -46,7 +46,7 @@
                                 <td class="border-bottom-0 d-flex">
                                     <a class="btn btn-dark m-1" href="{{ path('app_educateur_show', {'id': educateur.id}) }}">Voir</a>
                                     <a class="btn btn-warning m-1" href="{{ path('app_educateur_edit', {'id': educateur.id}) }}">Modifier</a>
-                                    <a class="btn btn-danger m-1" href="{{ path('app_educateur_delete', {'id': educateur.id}) }}">Supprimer</a>
+                                    {{ include('educateur/_delete_form.html.twig', {'id': contact.id}) }}
                                 </td>
                             </tr>
                         {% endfor %}

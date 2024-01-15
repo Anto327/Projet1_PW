@@ -21,14 +21,10 @@ class ContactType extends AbstractType
             ->add('telephone')
             ->add('licencie', EntityType::class, [
                 'class' => Licencie::class,
-'choice_label' => 'id',
-            ])
-            ->add('mailContacts', EntityType::class, [
-                'class' => MailContact::class,
-'choice_label' => 'id',
-'multiple' => true,
-            ])
-        ;
+                'choice_label' => function (Licencie $licencie) {
+                    return $licencie->getNom() . ' ' . $licencie->getPrenom();
+                },
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

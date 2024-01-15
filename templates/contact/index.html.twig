@@ -58,7 +58,7 @@
                                 <td class="border-bottom-0 d-flex">
                                     <a class="btn btn-dark m-1" href="{{ path('app_contact_show', {'id': contact.id}) }}">Voir</a>
                                     <a class="btn btn-warning m-1" href="{{ path('app_contact_edit', {'id': contact.id}) }}">Modifier</a>
-                                    <a class="btn btn-danger m-1" href="{{ path('app_contact_delete', {'id': contact.id}) }}">Supprimer</a>
+                                    {{ include('contact/_delete_form.html.twig', {'id': contact.id}) }}
                                 </td>
                             </tr>
                         {% endfor %}
