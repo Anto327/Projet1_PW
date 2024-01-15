@@ -1,19 +1,7 @@
-{# templates/categorie/_form.html.twig #}
-
-{{ form_start(form, {'attr': {'class': 'custom-form'}}) }}
-
-<div class="mb-4">
-    {{ form_label(form.nom) }}
-    {{ form_widget(form.nom, {'attr': {'class': 'mb-4', 'placeholder': 'Nom de la catégorie'}}) }}
-</div>
-
-<div class="mb-4">
-    {{ form_label(form.codeRaccourci) }}
-    {{ form_widget(form.codeRaccourci, {'attr': {'class': 'form-control', 'placeholder': 'ex: M10'}}) }}
-</div>
-
-
-    <button type="submit" class="btn btn-primary">Save</button>
-
-
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    {% if disable_btn is not defined %}
+    <button class="btn  btn-success">{{ button_label|default('Ajouter') }}</button>
+    {% endif %}
+    <a href="{{  path('app_categorie_index') }}" class="btn btn-dark">Revenir</a>
 {{ form_end(form) }}

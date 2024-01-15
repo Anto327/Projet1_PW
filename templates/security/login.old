@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-bs-theme="light" data-color-theme="Blue_Theme">
+
+
+<!-- Mirrored from bootstrapdemos.adminmart.com/modernize/dist/main/authentication-login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 08 Jan 2024 23:12:43 GMT -->
+<head>
+  <!-- Required meta tags -->
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- Favicon icon-->
+
+
+<!-- Core Css -->
+<link rel="stylesheet" href="https://bootstrapdemos.adminmart.com/modernize/dist/assets/css/styles.css" />
+
+  <title>{% block title %}Log in!{% endblock %}</title>
+</head>
+
+<body>
+  
+  <div id="main-wrapper">
+    <div class="position-relative overflow-hidden radial-gradient min-vh-100 w-100">
+      <div class="position-relative z-index-5">
+        <div class="row">
+         
+          <div class="col-xl-5 col-xxl-4">
+            <div class="authentication-login min-vh-100 bg-body row justify-content-center align-items-center p-4">
+              <div class="auth-max-width col-sm-8 col-md-6 col-xl-7 px-4">
+                <h2 class="mb-1 fs-7 fw-bolder">Connexion</h2>
+               
+                
+                <div class="position-relative text-center my-4">
+                  
+                  <span class="border-top w-100 position-absolute top-50 start-50 translate-middle"></span>
+                </div>
+                <form action="" method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+                    {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                    {% endif %}
+                  <div class="mb-3">
+                    <label for="inputEmail" class="form-label">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>         
+                  </div>
+                  <div class="mb-4">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    
+                    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+                  </div>
+                  <div class="d-flex align-items-center justify-content-between mb-4">
+                    
+                 <!-- <a href="{{ path('app_home') }}" class="btn btn-primary w-100 py-8 mb-4 rounded-2">Sign In</a> -->
+
+                  <button class="btn btn-lg btn-primary" type="submit">Sign in </button>
+        
+                
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dark-transparent sidebartoggler"></div>
+  <!-- Import Js Files -->
+
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/app.min.js"></script>
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/app.init.js"></script>
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/libs/simplebar/dist/simplebar.min.js"></script>
+
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/sidebarmenu.js"></script>
+<script src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/js/theme.js"></script>
+
+
+</body>
+
+</html>

@@ -1,101 +1,61 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Educateur index{% endblock %}
+{% block title %}Éducateurs{% endblock %}
 
 {% block body %}
-    <h1>Educateur index</h1>
-
-    <
-     <div class="body-wrapper">
-        <div class="container-fluid">
-          <div class="card bg-info-subtle shadow-none position-relative overflow-hidden mb-4">
-  <div class="card-body px-4 py-3">
-    <div class="row align-items-center">
-      <div class="col-9">
-        <h4 class="fw-semibold mb-8">Educateur</h4>
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a class="text-muted text-decoration-none" href="https://bootstrapdemos.adminmart.com/modernize/dist/main/index.html"
-                >Home</a
-              >
-            </li>
-            <li class="breadcrumb-item" aria-current="page">Educateur</li>
-          </ol>
-        </nav>
-      </div>
-      <div class="col-3">
-        <div class="text-center mb-n5">
-          <img
-            src="https://bootstrapdemos.adminmart.com/modernize/dist/assets/images/breadcrumb/ChatBc.png"
-            alt=""
-            class="img-fluid mb-n4"
-          />
+<div class="card w-100">
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title fw-semibold mb-4">Éducateurs</h5>
+            <a class="btn btn-primary m-1" href="{{ path('app_educateur_new') }}">Ajouter</a>
         </div>
-      </div>
+        <!-- Flash message section -->
+        {# {% include './views/components/flashMsg.php' %} #}
+        <!-- Records -->
+        <div class="table-responsive">
+            {% if educateurs|length > 1 %}
+                <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                        <tr>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Email</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Roles</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Licencié</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Actions</h6>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for educateur in educateurs %}
+                            <tr>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">{{ educateur.email }}</h6>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">{{ educateur.roles|join(', ') }}</h6>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-1">{{ educateur.licencie.nom }} {{ educateur.licencie.prenom }}</h6>
+                                </td>
+                                <td class="border-bottom-0 d-flex">
+                                    <a class="btn btn-dark m-1" href="{{ path('app_educateur_show', {'id': educateur.id}) }}">Voir</a>
+                                    <a class="btn btn-warning m-1" href="{{ path('app_educateur_edit', {'id': educateur.id}) }}">Modifier</a>
+                                    <a class="btn btn-danger m-1" href="{{ path('app_educateur_delete', {'id': educateur.id}) }}">Supprimer</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Aucun éducateur trouvé.</p>
+            {% endif %}
+        </div>
     </div>
-  </div>
 </div>
-
-          <div class="widget-content searchable-container list">
-            <div class="card card-body">
-              <div class="row">
-                
-      <form>
-        <div class="form-group">
-            <label for="categorieLabel">Catégorie</label>
-            <select class="form-control" id="categorieLabel" name="categorie">
-              {#  {% for categorie in categories %}
-                    <option value="{{ categorie.id }}">{{ categorie.nom_categorie }}</option>
-                {% endfor %}
-               #} 
-            </select>
-           
-        </div>
-        </form>
-       
-                <div
-                  class="col-md-8 col-xl-9 text-end d-flex justify-content-md-end justify-content-center mt-3 mt-md-0">
-                  <a href="{{ path('app_educateur_new') }}" class="btn btn-info d-flex align-items-center">Create new</a>
-                  
-                </div>
-             
-            </div>
-            {# <div #}
-            
-            <div class="card card-body">
-              <div class="table-responsive">
-                <table class="table search-table align-middle text-nowrap">
-                  <thead class="header-item">
-                    
-                <th>Id</th>
-                <th>Email</th>
-                <th>Roles</th>
-                <th>Password</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for educateur in educateurs %}
-            <tr>
-                <td>{{ educateur.id }}</td>
-                <td>{{ educateur.email }}</td>
-                <td>{{ educateur.roles ? educateur.roles|json_encode : '' }}</td>
-                <td>{{ educateur.password }}</td>
-                <td>
-                    <a href="{{ path('app_educateur_show', {'id': educateur.id}) }}">show</a>
-                    <a href="{{ path('app_educateur_edit', {'id': educateur.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    
 {% endblock %}
-
-

@@ -45,8 +45,13 @@ class CategorieController extends AbstractController
     #[Route('/{id}', name: 'app_categorie_show', methods: ['GET'])]
     public function show(Categorie $categorie): Response
     {
+        $form = $this->createForm(CategorieType::class, $categorie, [
+            'disabled' => true,
+        ]);
+
         return $this->render('categorie/show.html.twig', [
             'categorie' => $categorie,
+            'form' => $form,
         ]);
     }
 
@@ -71,7 +76,7 @@ class CategorieController extends AbstractController
     #[Route('/{id}', name: 'app_categorie_delete', methods: ['POST'])]
     public function delete(Request $request, Categorie $categorie, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$categorie->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $categorie->getId(), $request->request->get('_token'))) {
             $entityManager->remove($categorie);
             $entityManager->flush();
         }
