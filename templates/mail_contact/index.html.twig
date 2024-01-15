@@ -29,18 +29,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for mailContact in mailContacts %}
+                        {% for mail_contact in mail_contacts %}
                             <tr>
                                 <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">{{ mailContact.dateEnvoi|date('Y-m-d H:i:s') }}</h6>
+                                    <h6 class="fw-semibold mb-0">{{ mail_contact.dateEnvoi|date('Y-m-d H:i:s') }}</h6>
                                 </td>
                                 <td class="border-bottom-0">
-                                    <h6 class="fw-semibold mb-0">{{ mailContact.objet }}</h6>
+                                    <h6 class="fw-semibold mb-0">{{ mail_contact.objet }}</h6>
                                 </td>
                                 <td class="border-bottom-0 d-flex">
-                                    <a class="btn btn-dark m-1" href="{{ path('app_mail_contact_show', {'id': mailContact.id}) }}">Voir</a>
-                                    <a class="btn btn-warning m-1" href="{{ path('app_mail_contact_edit', {'id': mailContact.id}) }}">Modifier</a>
-                                    {{ include('mail_contact/_delete_form.html.twig', {'id': mailContact.id}) }}
+                                    <a class="btn btn-dark m-1" href="{{ path('app_mail_contact_show', {'id': mail_contact.id}) }}">Voir</a>
+                                    <a class="btn btn-warning m-1" href="{{ path('app_mail_contact_edit', {'id': mail_contact.id}) }}">Modifier</a>
+                                    {{ include('mail_contact/_delete_form.html.twig', {'id': mail_contact.id}) }}
                                 </td>
                             </tr>
                         {% endfor %}

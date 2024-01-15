@@ -19,10 +19,11 @@ class MailContactType extends AbstractType
             ->add('message')
             ->add('contacts', EntityType::class, [
                 'class' => Contact::class,
-'choice_label' => 'id',
-'multiple' => true,
-            ])
-        ;
+                'choice_label' => function (Contact $contact) {
+                    return $contact->getNom() . ' ' . $contact->getPrenom();
+                },
+                'multiple' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
