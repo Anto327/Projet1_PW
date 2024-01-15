@@ -21,6 +21,6 @@ Suivant l'énoncé, le site nécessite une authentification avant d'accéder au 
 Les vidéos de présentation se trouve à la racine du projet sous les noms suivants:
 
 ```
-- Présentation partie DAO MVC.mkv
-- Présentation partie Symfony.mkv
+- Présentation partie DAO MVC
+- Présentation partie Symfony
 ```
