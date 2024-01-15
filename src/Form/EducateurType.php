@@ -6,6 +6,8 @@ use App\Entity\Educateur;
 use App\Entity\Licencie;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -15,15 +17,14 @@ class EducateurType extends AbstractType
     {
         $builder
             ->add('email')
-            // ->add('roles') // FIX ISSUE ON THIS FIELD
-            ->add('password')
+            ->add('password', PasswordType::class)
             ->add('licencie', EntityType::class, [
                 'class' => Licencie::class,
-                'choice_label' => 'id',
+                'choice_label' => function (Licencie $licencie) {
+                    return $licencie->getNom() . ' ' . $licencie->getPrenom();
+                },
             ]);
     }
-
-    
 
     public function configureOptions(OptionsResolver $resolver): void
     {

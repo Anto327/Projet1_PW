@@ -30,7 +30,7 @@
                     </thead>
                     <tbody>
           {% for categorie in categories %}
-                {% if categorie.id != 1 %}
+                {% if categorie.codeRaccourci != 'ADMINS' %}
                                 <tr>
                                     <td class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">{{categorie.nom}}</h6>

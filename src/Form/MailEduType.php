@@ -19,10 +19,11 @@ class MailEduType extends AbstractType
             ->add('message')
             ->add('educateurs', EntityType::class, [
                 'class' => Educateur::class,
-'choice_label' => 'id',
-'multiple' => true,
-            ])
-        ;
+                'choice_label' => function (Educateur $educateur) {
+                    return $educateur->getLicencie()->getNom() . ' ' . $educateur->getLicencie()->getPrenom();
+                },
+                'multiple' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

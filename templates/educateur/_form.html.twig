@@ -1,5 +1,12 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
+
+    {# Admin field #}
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="is_admin" name="is_admin" {% if educateur is defined and "ROLE_ADMIN" in educateur.roles %} checked {% endif %}>
+        <label class="form-check-label" for="is_admin" >Administrateur</label>
+    </div>
+
     {% if disable_btn is not defined %}
         <button class="btn  btn-success">{{ button_label|default('Ajouter') }}</button>
     {% endif %}

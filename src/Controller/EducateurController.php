@@ -26,6 +26,9 @@ class EducateurController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $educateur = new Educateur();
+        if ($request->request->get('is_admin')) {
+            $educateur->setRoles(['ROLE_ADMIN']);
+        }
         $form = $this->createForm(EducateurType::class, $educateur);
         $form->handleRequest($request);
 
@@ -58,6 +61,11 @@ class EducateurController extends AbstractController
     #[Route('/{id}/edit', name: 'app_educateur_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Educateur $educateur, EntityManagerInterface $entityManager): Response
     {
+        if ($request->request->get('is_admin')) {
+            $educateur->setRoles(['ROLE_ADMIN']);
+        } else {
+            $educateur->setRoles(['ROLE_USER']);
+        }
         $form = $this->createForm(EducateurType::class, $educateur);
         $form->handleRequest($request);
 

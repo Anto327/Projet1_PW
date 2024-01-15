@@ -1,49 +1,55 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}MailEdu index{% endblock %}
+{% block title %}Mails Educateur{% endblock %}
 
 {% block body %}
-    <h1>MailEdu index</h1>
-    <div class="card card-body">
+<div class="card w-100">
+    <div class="card-body p-4">
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title fw-semibold mb-4">Mails Educateur</h5>
+            <a class="btn btn-primary m-1" href="{{ path('app_mail_edu_new') }}">Ajouter</a>
+        </div>
+        <!-- Flash message section -->
+        {# {% include './views/components/flashMsg.php' %} #}
+        <!-- Records -->
         <div class="table-responsive">
-
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>DateEnvoi</th>
-                <th>Objet</th>
-                <th>Message</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for mail_edu in mail_edus %}
-            <tr>
-                <td>{{ mail_edu.id }}</td>
-                <td>{{ mail_edu.dateEnvoi ? mail_edu.dateEnvoi|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ mail_edu.objet }}</td>
-                <td>{{ mail_edu.message }}</td>
-                <td>
-                    <a href="{{ path('app_mail_edu_show', {'id': mail_edu.id}) }}">show</a>
-                    <a href="{{ path('app_mail_edu_edit', {'id': mail_edu.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+            {% if mail_edus|length > 0 %}
+                <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                        <tr>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Date Envoi</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Objet</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Actions</h6>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for mail_edu in mail_edus %}
+                            <tr>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">{{ mail_edu.dateEnvoi|date('Y-m-d H:i:s') }}</h6>
+                                </td>
+                                <td class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">{{ mail_edu.objet }}</h6>
+                                </td>
+                                <td class="border-bottom-0 d-flex">
+                                    <a class="btn btn-dark m-1" href="{{ path('app_mail_edu_show', {'id': mail_edu.id}) }}">Voir</a>
+                                    <a class="btn btn-warning m-1" href="{{ path('app_mail_edu_edit', {'id': mail_edu.id}) }}">Modifier</a>
+                                    {{ include('mail_edu/_delete_form.html.twig', {'id': mail_edu.id}) }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>Aucun mail éducateur trouvé.</p>
+            {% endif %}
+        </div>
     </div>
-    </div>
-     <div class="px-9 pt-4 pb-3">
-     <a href="{{ path('app_mail_edu_new') }} "class="btn btn-primary fw-semibold py-8 w-100 ">Nouveau Email</a>
-                  
-                </div>
-
-    
+</div>
 {% endblock %}

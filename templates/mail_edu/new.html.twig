@@ -1,25 +1,23 @@
-
-{# templates/educateur/new.html.twig #}
-
 {% extends 'base.html.twig' %}
 
-{% block title %}New Educateur{% endblock %}
+{% block title %}Envoyer un éducateur{% endblock %}
 
 {% block body %}
- <h1>New MailEdu</h1>
-   
-    <div class="col-lg-6">  
-             
-            <div class="card-body p-4">
-            {{ include('mail_edu/_form.html.twig', {'form': form}) }}
-           </div>
-    </div>
-    
-        <div class="mb-4">
-        <a href="{{ path('app_mail_edu_index') }}" class="btn btn-success">back to list</a>
-        
+    <div class="card w-100">
+        <div class="card-body p-4">
+            <div class="d-flex justify-content-between">
+                <h5 class="card-title fw-semibold mb-4">Envoyer un éducateur</h5>
+            </div>
+            <!-- Flash message section -->
+            {# {% include 'components/flashMsg.html.twig' %} #}
+            <!-- Form -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        {{ include('mail_edu/_form.html.twig', {'form': form, 'button_label': 'Envoyer'}) }}
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 {% endblock %}
-
-
-
