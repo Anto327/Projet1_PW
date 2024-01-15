@@ -1,13 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit MailEdu{% endblock %}
+{% block title %}Modifier un mail{% endblock %}
 
 {% block body %}
-    <h1>Edit MailEdu</h1>
-
-    {{ include('mail_edu/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_mail_edu_index') }}">back to list</a>
-
-    {{ include('mail_edu/_delete_form.html.twig') }}
+    <div class="card w-100">
+        <div class="card-body p-4">
+            <div class="d-flex justify-content-between">
+                <h5 class="card-title fw-semibold mb-4">Modifier un mail</h5>
+            </div>
+            <!-- Flash message section -->
+            {# {% include 'components/flashMsg.html.twig' %} #}
+            <!-- Form -->
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        {{ include('mail_edu/_form.html.twig', {'button_label': 'Modifier'}) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
